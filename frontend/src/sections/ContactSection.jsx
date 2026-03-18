@@ -41,15 +41,15 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="section-shell px-6 py-10 md:px-10">
+    <section id="contact" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="Contact"
-        title="Let’s talk about internships, junior roles, or collaborative projects."
+        title="Let's talk about internships, junior roles, or collaborative projects."
         description="This form submits directly to the Django REST API and stores each message inside SQLite."
       />
 
       <div className="grid gap-8 lg:grid-cols-[0.75fr_1fr]">
-        <div className="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
+        <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 md:rounded-[1.75rem] md:p-6">
           <p className="text-lg font-semibold text-sand">Why this section matters</p>
           <p className="mt-4 text-sm leading-7 text-mist">
             Recruiters or collaborators can leave a message without relying on
@@ -65,7 +65,7 @@ export default function ContactSection() {
 
         <form
           onSubmit={handleSubmit}
-          className="rounded-[1.75rem] border border-white/10 bg-black/20 p-6"
+          className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 md:rounded-[1.75rem] md:p-6"
         >
           <div className="grid gap-5">
             <label className="grid gap-2 text-sm text-mist">
@@ -110,7 +110,7 @@ export default function ContactSection() {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-6 rounded-full bg-ember px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d] disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-ember px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           >
             {submitting ? "Sending..." : "Send Message"}
           </button>

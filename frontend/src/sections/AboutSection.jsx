@@ -20,18 +20,18 @@ const strengths = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section-shell px-6 py-10 md:px-10">
+    <section id="about" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="About Me"
         title="A graduating student preparing for professional full-stack work."
         description="This portfolio is designed to highlight both technical growth and the ability to deliver polished, end-to-end web experiences."
       />
 
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3 md:gap-5">
         {strengths.map((item) => (
           <article
             key={item.title}
-            className="rounded-[1.75rem] border border-white/10 bg-black/20 p-6"
+            className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 md:rounded-[1.75rem] md:p-6"
           >
             <h3 className="text-lg font-semibold text-sand">{item.title}</h3>
             <p className="mt-3 text-sm leading-7 text-mist">{item.description}</p>

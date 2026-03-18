@@ -37,7 +37,7 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="section-shell px-6 py-10 md:px-10">
+    <section id="skills" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="Skills"
         title="Technologies I use to build full-stack applications."
@@ -52,7 +52,7 @@ export default function SkillsSection() {
           {skills.map((skill) => (
             <article
               key={skill.id}
-              className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5"
+              className="rounded-[1.4rem] border border-white/10 bg-black/20 p-4 sm:p-5"
             >
               <div className="flex items-center justify-between gap-4">
                 <h3 className="text-base font-semibold text-sand">{skill.name}</h3>

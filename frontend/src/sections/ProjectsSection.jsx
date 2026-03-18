@@ -37,7 +37,7 @@ export default function ProjectsSection() {
   }, []);
 
   return (
-    <section id="projects" className="section-shell px-6 py-10 md:px-10">
+    <section id="projects" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="Projects"
         title="Selected work focused on practical, portfolio-ready solutions."
@@ -48,20 +48,20 @@ export default function ProjectsSection() {
       {error ? <ErrorState message={error} /> : null}
 
       {!loading && !error ? (
-        <div className="grid gap-5 xl:grid-cols-3">
+        <div className="grid gap-4 md:gap-5 xl:grid-cols-3">
           {projects.map((project) => (
             <article
               key={project.id}
               className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/20"
             >
-              <div className="min-h-48 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-6">
+              <div className="min-h-40 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-5 sm:min-h-48 sm:p-6">
                 <div className="flex h-full items-end">
                   <span className="rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-emberSoft">
                     Featured Project
                   </span>
                 </div>
               </div>
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
                 <h3 className="text-xl font-semibold text-sand">{project.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-mist">
                   {project.description}
