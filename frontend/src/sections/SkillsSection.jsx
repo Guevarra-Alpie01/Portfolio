@@ -16,7 +16,7 @@ const featuredSkillOrder = [
   "MySQL",
   "PostgreSQL",
   "SQLite",
-  "Git / GitHub",
+  "GitHub",
 ];
 
 export default function SkillsSection() {

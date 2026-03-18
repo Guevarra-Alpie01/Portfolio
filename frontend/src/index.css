@@ -125,6 +125,43 @@ section[id] {
   box-shadow: var(--surface-shadow);
 }
 
+.hero-reference-card {
+  min-height: 24rem;
+  background-image:
+    radial-gradient(circle at top left, rgba(var(--color-ember) / 0.2), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(var(--color-ember) / 0.08), transparent 22%),
+    var(--hero-mesh);
+}
+
+.hero-copy {
+  padding-right: min(8vw, 3rem);
+}
+
+.hero-item {
+  opacity: 0;
+  animation: heroFadeUp 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-item-1 {
+  animation-delay: 0.08s;
+}
+
+.hero-item-2 {
+  animation-delay: 0.18s;
+}
+
+.hero-item-3 {
+  animation-delay: 0.3s;
+}
+
+.hero-item-4 {
+  animation-delay: 0.42s;
+}
+
+.hero-item-5 {
+  animation-delay: 0.54s;
+}
+
 .card-shell {
   @apply transition-colors duration-300;
   border: 1px solid var(--border-soft);
@@ -179,6 +216,27 @@ section[id] {
 
 .ghost-button:hover {
   background: var(--chip-bg);
+}
+
+.tech-icon-chip {
+  border: 1px solid var(--border-soft);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+    var(--chip-bg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 24px rgba(var(--shadow-panel) / 0.12);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.tech-icon-chip:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  color: rgb(var(--color-ember-soft));
 }
 
 .profile-shell {
@@ -271,6 +329,19 @@ html[data-theme="light"] .hero-shell {
     linear-gradient(135deg, rgba(252, 245, 240, 0.98) 0%, rgba(241, 229, 220, 0.98) 100%);
 }
 
+html[data-theme="light"] .hero-reference-card {
+  background-image:
+    radial-gradient(circle at top left, rgba(210, 95, 79, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(186, 145, 119, 0.12), transparent 24%),
+    var(--hero-mesh);
+}
+
+html[data-theme="light"] .tech-icon-chip {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 247, 242, 0.52)),
+    var(--chip-bg);
+}
+
 html[data-theme="light"] .profile-image-shell {
   background:
     radial-gradient(circle at top, rgba(var(--color-ember) / 0.14), transparent 58%),
@@ -355,11 +426,23 @@ html[data-theme="light"] .text-sand {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-item,
   .profile-shell-entrance,
   .profile-image-shell-entrance,
   .profile-image-entrance,
   .profile-name-entrance,
   .profile-socials-entrance {
     animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-copy {
+    padding-right: 0;
+  }
+
+  .hero-reference-card {
+    min-height: auto;
   }
 }
