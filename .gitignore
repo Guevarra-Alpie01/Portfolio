@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+db.sqlite3
+.pytest_cache/
+
+# Django static output
+staticfiles/
+media/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Virtual environments
+venv/
+.venv/
