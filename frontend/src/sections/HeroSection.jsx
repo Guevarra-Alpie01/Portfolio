@@ -1,3 +1,46 @@
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 .1 1.6 2.7 4.3 1.9.1-.8.4-1.3.7-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C19 5.6 20 5.9 20 5.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1 .8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.49 2.49 0 1 0 0 4.98 2.49 2.49 0 0 0 0-4.98ZM3 8.98h3.96V21H3V8.98Zm7.02 0H13.8v1.64h.05c.52-.99 1.8-2.03 3.7-2.03 3.95 0 4.68 2.6 4.68 5.98V21h-3.96v-5.7c0-1.36-.02-3.11-1.9-3.11-1.9 0-2.2 1.49-2.2 3.02V21h-3.95V8.98Z" />
+    </svg>
+  );
+}
+
+function EmailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="M3.5 6.5h17a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-17a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1Z" />
+      <path d="m4.5 7.5 7.5 6 7.5-6" />
+    </svg>
+  );
+}
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Guevarra-Alpie01",
+    icon: <GitHubIcon />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/guevarra-alpie-m-984103371",
+    icon: <LinkedInIcon />,
+  },
+  {
+    label: "Email",
+    href: "mailto:alpieguevarra12@gmail.com",
+    icon: <EmailIcon />,
+  },
+];
+
 export default function HeroSection() {
   return (
     <section
@@ -50,23 +93,21 @@ export default function HeroSection() {
                 Alpie Guevarra
               </p>
             </div>
-            <div className="mt-5 grid gap-3 text-sm text-mist md:mt-6">
-              <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <span>Backend</span>
-                <span className="font-semibold text-sand">Django + Python</span>
-              </div>
-              <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <span>Frontend</span>
-                <span className="font-semibold text-sand">Bootstrap + Tailwind</span>
-              </div>
-              <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <span>Database</span>
-                <span className="font-semibold text-sand">MySQL, PostgreSQL, SQLite</span>
-              </div>
-              <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <span>Version Control</span>
-                <span className="font-semibold text-sand">Git + GitHub</span>
-              </div>
+            <div className="mt-5 flex flex-wrap justify-center gap-2">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                  aria-label={link.label}
+                  title={link.label}
+                  className="social-icon-button chip-outline inline-flex h-11 w-11 items-center justify-center rounded-full text-sand transition hover:text-emberSoft"
+                >
+                  <span className="sr-only">{link.label}</span>
+                  {link.icon}
+                </a>
+              ))}
             </div>
           </div>
         </div>
