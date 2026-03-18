@@ -36,11 +36,6 @@ export default function App() {
     }
     return window.localStorage.getItem("portfolio-theme") || "dark";
   });
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  function handleNavClick() {
-    setMenuOpen(false);
-  }
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -50,28 +45,42 @@ export default function App() {
   return (
     <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <header className="glass-shell sticky top-3 z-50 mb-4 rounded-[1.75rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
-          <div className="flex items-center justify-between gap-4">
-            <a
-              href="#home"
-              onClick={handleNavClick}
-              className="pr-3 text-[0.7rem] font-bold uppercase tracking-[0.28em] text-sand sm:text-sm sm:tracking-[0.35em] md:tracking-[0.4em]"
-            >
-              Alpie Guevarra
-            </a>
-            <div className="flex items-center gap-3">
-              <nav className="hidden flex-wrap gap-6 text-sm text-mist md:flex">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleNavClick}
-                    className="nav-link transition"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
+        <header className="glass-shell sticky top-3 z-50 mb-4 rounded-[1.5rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
+          <div className="grid gap-3 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6">
+            <div className="flex items-center justify-between gap-3 md:justify-start">
+              <a
+                href="#home"
+                className="text-[0.66rem] font-bold uppercase tracking-[0.24em] text-sand sm:text-[0.72rem] sm:tracking-[0.3em] md:text-sm md:tracking-[0.38em]"
+              >
+                Alpie Guevarra
+              </a>
+              <button
+                type="button"
+                onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+                className="theme-toggle inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sand md:hidden"
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                aria-pressed={theme === "light"}
+              >
+                <span className="sr-only">
+                  Switch to {theme === "dark" ? "light" : "dark"} mode
+                </span>
+                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+              </button>
+            </div>
+
+            <nav className="flex items-center justify-center gap-3 overflow-x-auto whitespace-nowrap pb-1 text-[0.68rem] text-mist [scrollbar-width:none] sm:gap-4 sm:text-xs md:flex-wrap md:justify-center md:gap-6 md:pb-0 md:text-sm">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="nav-link shrink-0 transition"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="hidden md:flex md:justify-end">
               <button
                 type="button"
                 onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
@@ -84,37 +93,8 @@ export default function App() {
                 </span>
                 {theme === "dark" ? <SunIcon /> : <MoonIcon />}
               </button>
-              <button
-                type="button"
-                onClick={() => setMenuOpen((current) => !current)}
-                className="theme-toggle inline-flex h-11 items-center justify-center rounded-full px-4 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-sand hover:text-emberSoft md:hidden"
-                aria-expanded={menuOpen}
-                aria-controls="mobile-nav"
-                aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-              >
-                {menuOpen ? "Close" : "Menu"}
-              </button>
             </div>
           </div>
-
-          {menuOpen ? (
-            <nav
-              id="mobile-nav"
-              className="mt-4 grid gap-2 pt-4 text-sm text-mist md:hidden"
-              style={{ borderTop: "1px solid var(--border-soft)" }}
-            >
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNavClick}
-                  className="theme-toggle rounded-2xl px-4 py-3 transition hover:text-emberSoft"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          ) : null}
         </header>
 
         <main className="space-y-4 md:space-y-6">

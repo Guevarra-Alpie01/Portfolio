@@ -44,22 +44,22 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="hero-shell hero-reference-card relative overflow-hidden rounded-[1.9rem] bg-mesh px-5 py-8 shadow-glow sm:px-7 sm:py-10 md:rounded-[2.5rem] md:px-8 md:py-12"
+      className="hero-shell hero-reference-card relative overflow-hidden rounded-[1.9rem] bg-mesh px-4 py-7 shadow-glow sm:px-7 sm:py-10 md:rounded-[2.5rem] md:px-8 md:py-12"
     >
       <div className="absolute -right-20 top-0 h-44 w-44 rounded-full border border-ember/25 sm:h-52 sm:w-52" />
       <div className="absolute bottom-0 right-16 h-28 w-28 rounded-full bg-ember/12 blur-3xl" />
 
-      <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_20rem] md:gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="relative z-10 grid items-center gap-7 md:grid-cols-[minmax(0,1fr)_20rem] md:gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="hero-copy max-w-2xl">
           <p className="hero-item hero-item-1 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
             Full-Stack Developer
           </p>
 
-          <h1 className="hero-item hero-item-2 mt-4 max-w-xl text-[2.65rem] font-extrabold leading-[0.95] text-sand sm:text-5xl md:text-[4.25rem]">
+          <h1 className="hero-item hero-item-2 mt-4 max-w-[10ch] text-[2.05rem] font-extrabold leading-[0.93] text-sand sm:max-w-xl sm:text-[3.2rem] md:text-[4.25rem]">
             Crafting modern web applications.
           </h1>
 
-          <p className="hero-item hero-item-3 mt-5 max-w-lg text-base leading-7 text-mist sm:text-lg sm:leading-8">
+          <p className="hero-item hero-item-3 mt-4 max-w-md text-[0.98rem] leading-7 text-mist sm:mt-5 sm:max-w-lg sm:text-lg sm:leading-8">
             Django, Python Developer.
           </p>
 
@@ -92,11 +92,11 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-item hero-item-4 mx-auto w-full max-w-[22rem]">
+        <div className="hero-item hero-item-4 mx-auto w-full max-w-[18.5rem] sm:max-w-[22rem]">
           <div className="section-shell hero-portrait-card relative overflow-hidden rounded-[2rem] p-4 sm:p-5">
             <div className="nested-shell rounded-[1.6rem] px-4 pb-5 pt-10 sm:px-5 sm:pb-6 sm:pt-12">
               <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">
-                <div className="profile-image-shell profile-image-shell-entrance mx-auto flex h-64 w-64 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72">
+                <div className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72">
                   <img
                     src="/images/alpieremovebackground.png"
                     alt="Alpie Guevarra"
