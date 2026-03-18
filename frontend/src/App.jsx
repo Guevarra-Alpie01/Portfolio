@@ -52,7 +52,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <header className="glass-shell mb-4 rounded-[1.75rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
+        <header className="glass-shell sticky top-3 z-50 mb-4 rounded-[1.75rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
           <div className="flex items-center justify-between gap-4">
             <a
               href="#home"

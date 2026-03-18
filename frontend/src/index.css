@@ -75,6 +75,7 @@ html[data-theme="light"] {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
 }
 
 body {
@@ -89,6 +90,10 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+section[id] {
+  scroll-margin-top: 6.5rem;
 }
 
 .section-shell {
