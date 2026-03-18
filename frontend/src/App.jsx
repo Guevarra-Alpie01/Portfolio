@@ -14,6 +14,23 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="4.2" />
+      <path d="M12 2.5v2.3M12 19.2v2.3M21.5 12h-2.3M4.8 12H2.5M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6M18.7 18.7l-1.6-1.6M6.9 6.9 5.3 5.3" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M20 14.2A8.2 8.2 0 1 1 9.8 4a6.9 6.9 0 1 0 10.2 10.2Z" />
+    </svg>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState(() => {
     if (typeof window === "undefined") {
@@ -45,13 +62,29 @@ export default function App() {
               Alpie Guevarra
             </a>
             <div className="flex items-center gap-3">
+              <nav className="hidden flex-wrap gap-6 text-sm text-mist md:flex">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={handleNavClick}
+                    className="nav-link transition"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
               <button
                 type="button"
                 onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-                className="theme-toggle inline-flex h-11 items-center justify-center rounded-full px-4 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-sand hover:text-emberSoft"
+                className="theme-toggle inline-flex h-11 w-11 items-center justify-center rounded-full text-sand"
                 aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                aria-pressed={theme === "light"}
               >
-                {theme === "dark" ? "Light" : "Dark"}
+                <span className="sr-only">
+                  Switch to {theme === "dark" ? "light" : "dark"} mode
+                </span>
+                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
               </button>
               <button
                 type="button"
@@ -63,18 +96,6 @@ export default function App() {
               >
                 {menuOpen ? "Close" : "Menu"}
               </button>
-              <nav className="hidden flex-wrap gap-6 text-sm text-mist md:flex">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleNavClick}
-                    className="transition hover:text-emberSoft"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
             </div>
           </div>
 

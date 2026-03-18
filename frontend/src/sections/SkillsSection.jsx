@@ -79,7 +79,7 @@ export default function SkillsSection() {
                   {skill.level}%
                 </span>
               </div>
-              <div className="mt-4 h-2 rounded-full bg-white/10">
+              <div className="progress-track mt-4 h-2 rounded-full">
                 <div
                   className="h-2 rounded-full bg-gradient-to-r from-ember to-emberSoft"
                   style={{ width: `${skill.level}%` }}

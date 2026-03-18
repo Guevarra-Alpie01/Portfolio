@@ -29,7 +29,7 @@ export default function HeroSection() {
             </a>
             <a
               href="#contact"
-              className="inline-flex w-full items-center justify-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-sand transition hover:border-emberSoft hover:text-emberSoft sm:w-auto"
+              className="ghost-button inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-sand transition hover:text-emberSoft sm:w-auto"
             >
               Contact Me
             </a>
@@ -38,21 +38,19 @@ export default function HeroSection() {
 
         <div className="section-shell relative mx-auto w-full max-w-md p-4 sm:p-5 md:p-6">
           <div className="nested-shell rounded-[1.6rem] p-4 sm:rounded-[1.8rem] sm:p-5 md:rounded-[2rem] md:p-6">
-            <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-ember/30 via-white/10 to-transparent text-center shadow-glow sm:h-48 sm:w-48 md:h-56 md:w-56">
-              <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-emberSoft sm:text-sm sm:tracking-[0.3em]">
-                  Available For
-                </p>
-                <p className="mt-2 text-xl font-bold text-sand sm:mt-3 sm:text-2xl">
-                  Full-Stack Developer Roles
-                </p>
+            <div className="profile-shell mx-auto w-full max-w-[18rem] rounded-[2rem] p-4 text-center">
+              <div className="profile-image-shell mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.7rem]">
+                <img
+                  src="/images/alpie.jpg"
+                  alt="Alpie Guevarra"
+                  className="h-full w-full object-cover object-center"
+                />
               </div>
+              <p className="mt-4 text-xl font-bold text-sand sm:text-2xl">
+                Alpie Guevarra
+              </p>
             </div>
             <div className="mt-5 grid gap-3 text-sm text-mist md:mt-6">
-              <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <span>Role</span>
-                <span className="font-semibold text-sand">Full-Stack Developer</span>
-              </div>
               <div className="info-row-shell flex flex-col gap-1 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
                 <span>Backend</span>
                 <span className="font-semibold text-sand">Django + Python</span>

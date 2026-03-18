@@ -115,7 +115,7 @@ export default function ContactSection() {
           </button>
 
           {successMessage ? (
-            <p className="mt-4 text-sm text-green-300">{successMessage}</p>
+            <p className="success-text mt-4 text-sm">{successMessage}</p>
           ) : null}
           {errorMessage ? (
             <p className="mt-4 text-sm text-emberSoft">{errorMessage}</p>

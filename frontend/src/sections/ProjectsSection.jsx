@@ -56,7 +56,7 @@ export default function ProjectsSection() {
             >
               <div className="min-h-40 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-5 sm:min-h-48 sm:p-6">
                 <div className="flex h-full items-end">
-                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-emberSoft">
+                  <span className="chip-outline rounded-full px-3 py-1 text-xs uppercase tracking-[0.3em] text-emberSoft">
                     Featured Project
                   </span>
                 </div>
@@ -70,7 +70,7 @@ export default function ProjectsSection() {
                   {project.tech_stack_items.map((item) => (
                     <span
                       key={`${project.id}-${item}`}
-                      className="rounded-full border border-white/10 px-3 py-1 text-xs text-sand"
+                      className="chip-outline rounded-full px-3 py-1 text-xs text-sand"
                     >
                       {item}
                     </span>
@@ -80,7 +80,7 @@ export default function ProjectsSection() {
                   href={project.github_link}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-6 inline-flex text-sm font-semibold text-emberSoft transition hover:text-white"
+                  className="accent-link mt-6 inline-flex text-sm font-semibold text-emberSoft transition"
                 >
                   View GitHub Repository
                 </a>
