@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchProjects } from "../api";
 import ErrorState from "../components/ErrorState";
 import LoadingState from "../components/LoadingState";
+import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 
 export default function ProjectsSection() {
@@ -38,20 +39,23 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
-      <SectionHeading
-        eyebrow="Projects"
-        title="Selected work focused on practical, portfolio-ready solutions."
-        description="Projects are fetched from the backend so you can update them later through Django admin or the database."
-      />
+      <Reveal>
+        <SectionHeading
+          eyebrow="Projects"
+          title="Selected work focused on practical, portfolio-ready solutions."
+          description="Projects are fetched from the backend so you can update them later through Django admin or the database."
+        />
+      </Reveal>
 
       {loading ? <LoadingState label="projects" /> : null}
       {error ? <ErrorState message={error} /> : null}
 
       {!loading && !error ? (
         <div className="grid gap-4 md:gap-5 xl:grid-cols-3">
-          {projects.map((project) => (
-            <article
+          {projects.map((project, index) => (
+            <Reveal
               key={project.id}
+              delay={index * 110}
               className="card-shell overflow-hidden rounded-[1.75rem]"
             >
               <div className="min-h-40 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-5 sm:min-h-48 sm:p-6">
@@ -85,7 +89,7 @@ export default function ProjectsSection() {
                   View GitHub Repository
                 </a>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       ) : null}

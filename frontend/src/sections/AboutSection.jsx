@@ -1,3 +1,5 @@
+import Reveal from "../components/Reveal";
+
 function UserIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
@@ -102,6 +104,41 @@ function DatabaseIcon() {
   );
 }
 
+function PostgreSqlIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M7.4 10.4c0-3 1.7-5.1 4.2-5.1 2.7 0 4.7 2.2 4.7 5.3 0 2.8-1.4 4.7-3.6 5.1v2.8l-2.3-1.6-2.2 1.1v-2.8c-.5-.2-.9-.5-1.3-.9-.8-.8-1.4-2.1-1.4-3.9Z" />
+      <path d="M9.7 10.5c0-1.8.7-2.8 1.9-2.8 1.1 0 2 .9 2 2.5 0 1.8-.8 2.8-2 2.8-1.2 0-1.9-1-1.9-2.5Z" />
+      <path d="M16 9.8c.9-.1 1.7-.3 2.3-.8" />
+    </svg>
+  );
+}
+
+function MySqlIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4.8 13.8c2.4-3.6 5.1-5.2 8-5 2.5.2 4.6 1.7 6.4 4.5" />
+      <path d="M10.6 8.9c-.1 1.4.2 2.6.9 3.7" />
+      <path d="M14.8 8.9c.8.7 1.5 1.7 2 2.8" />
+      <path d="M18.4 13.4c.6.7.8 1.6.6 2.6" />
+      <path d="M8.6 14.3c1.6 0 2.9.6 3.7 1.8" />
+      <path d="M6.3 15.2c-.5 1.1-.4 2.1.3 3" />
+    </svg>
+  );
+}
+
+function SqliteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <ellipse cx="12" cy="5.4" rx="5.5" ry="2.2" />
+      <path d="M6.5 5.4v7.8c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V5.4" />
+      <path d="M6.5 9.2c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2" />
+      <path d="M9.3 19.1h5.4" />
+      <path d="M10.2 16.9v2.2M13.8 16.9v2.2" />
+    </svg>
+  );
+}
+
 const aboutHighlights = [
   {
     label: "Backend",
@@ -145,9 +182,9 @@ const skillGroups = [
   {
     title: "Databases",
     items: [
-      { label: "PostgreSQL", icon: <DatabaseIcon /> },
-      { label: "MySQL", icon: <DatabaseIcon /> },
-      { label: "SQLite", icon: <DatabaseIcon /> },
+      { label: "PostgreSQL", icon: <PostgreSqlIcon /> },
+      { label: "MySQL", icon: <MySqlIcon /> },
+      { label: "SQLite", icon: <SqliteIcon /> },
     ],
   },
 ];
@@ -168,7 +205,11 @@ function SkillChip({ label, icon }) {
 export default function AboutSection() {
   return (
     <section id="about" className="grid gap-4 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-stretch md:gap-6">
-      <article className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8">
+      <Reveal
+        as="article"
+        variant="left"
+        className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
+      >
         <div>
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
             About Me
@@ -184,9 +225,10 @@ export default function AboutSection() {
         </div>
 
         <div className="mt-6 space-y-3">
-          {aboutHighlights.map((item) => (
-            <div
+          {aboutHighlights.map((item, index) => (
+            <Reveal
               key={item.label}
+              delay={index * 90}
               className="nested-shell flex items-start gap-3 rounded-[1.15rem] px-4 py-3"
             >
               <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full text-emberSoft chip-outline">
@@ -200,12 +242,17 @@ export default function AboutSection() {
                   {item.description}
                 </p>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
-      </article>
+      </Reveal>
 
-      <article className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8">
+      <Reveal
+        as="article"
+        variant="right"
+        delay={120}
+        className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
+      >
         <div>
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
             Skills
@@ -216,20 +263,26 @@ export default function AboutSection() {
         </div>
 
         <div className="mt-6 space-y-4">
-          {skillGroups.map((group) => (
-            <section key={group.title} className="card-shell rounded-[1.3rem] p-4 sm:p-5">
+          {skillGroups.map((group, groupIndex) => (
+            <Reveal
+              key={group.title}
+              delay={groupIndex * 100}
+              className="card-shell rounded-[1.3rem] p-4 sm:p-5"
+            >
               <h3 className="text-sm font-semibold text-sand sm:text-base">
                 {group.title}
               </h3>
               <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {group.items.map((item) => (
-                  <SkillChip key={item.label} label={item.label} icon={item.icon} />
+                {group.items.map((item, itemIndex) => (
+                  <Reveal key={item.label} delay={itemIndex * 70}>
+                    <SkillChip label={item.label} icon={item.icon} />
+                  </Reveal>
                 ))}
               </div>
-            </section>
+            </Reveal>
           ))}
         </div>
-      </article>
+      </Reveal>
     </section>
   );
 }

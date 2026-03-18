@@ -103,6 +103,34 @@ section[id] {
   box-shadow: var(--surface-shadow-soft);
 }
 
+.reveal {
+  opacity: 0;
+  filter: blur(0.35rem);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
+}
+
+.reveal-up {
+  transform: translateY(2rem);
+}
+
+.reveal-left {
+  transform: translateX(-2rem);
+}
+
+.reveal-right {
+  transform: translateX(2rem);
+}
+
+.reveal-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0);
+}
+
 .section-title {
   @apply text-xl font-semibold leading-tight text-sand sm:text-2xl md:text-3xl;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -426,6 +454,7 @@ html[data-theme="light"] .text-sand {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
   .hero-item,
   .profile-shell-entrance,
   .profile-image-shell-entrance,
@@ -434,6 +463,9 @@ html[data-theme="light"] .text-sand {
   .profile-socials-entrance {
     animation: none !important;
     opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
