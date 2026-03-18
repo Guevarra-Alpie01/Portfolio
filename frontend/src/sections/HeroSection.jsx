@@ -33,11 +33,53 @@ function GitIcon() {
   );
 }
 
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 .1 1.6 2.7 4.3 1.9.1-.8.4-1.3.7-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0C19 5.6 20 5.9 20 5.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1 .8 2.1v3.1c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M4.98 3.5a2.49 2.49 0 1 0 0 4.98 2.49 2.49 0 0 0 0-4.98ZM3 8.98h3.96V21H3V8.98Zm7.02 0H13.8v1.64h.05c.52-.99 1.8-2.03 3.7-2.03 3.95 0 4.68 2.6 4.68 5.98V21h-3.96v-5.7c0-1.36-.02-3.11-1.9-3.11-1.9 0-2.2 1.49-2.2 3.02V21h-3.95V8.98Z" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M13.4 21v-7.3h2.4l.4-2.8h-2.8V9.1c0-.8.2-1.4 1.4-1.4H16V5.2c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.4v2.4H8.6v2.8h2.3V21h2.5Z" />
+    </svg>
+  );
+}
+
 const stackIcons = [
   { label: "Python", icon: <PythonIcon /> },
   { label: "JavaScript", icon: <JavaScriptIcon /> },
   { label: "Databases", icon: <DatabaseIcon /> },
   { label: "Git", icon: <GitIcon /> },
+];
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Guevarra-Alpie01",
+    icon: <GitHubIcon />,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/guevarra-alpie-m-984103371",
+    icon: <LinkedInIcon />,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/share/1Amphg5LSD/",
+    icon: <FacebookIcon />,
+  },
 ];
 
 export default function HeroSection() {
@@ -106,6 +148,29 @@ export default function HeroSection() {
                 <p className="profile-name-entrance mt-4 text-xl font-bold text-sand sm:text-2xl">
                   Alpie Guevarra
                 </p>
+                <a
+                  href="/documents/alpie-guevarra-cv.txt"
+                  download
+                  className="profile-socials-entrance mt-5 inline-flex w-full items-center justify-center rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d]"
+                >
+                  Download CV
+                </a>
+                <div className="profile-socials-entrance mt-4 flex items-center justify-center gap-3">
+                  {socialLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={link.label}
+                      title={link.label}
+                      className="social-icon-button chip-outline inline-flex h-11 w-11 items-center justify-center rounded-full text-sand transition hover:text-emberSoft"
+                    >
+                      <span className="sr-only">{link.label}</span>
+                      {link.icon}
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

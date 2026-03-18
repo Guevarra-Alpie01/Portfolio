@@ -12,6 +12,11 @@ CORE STACK
 - Databases: MySQL, PostgreSQL, SQLite
 - Version Control: Git, GitHub
 
+SOCIAL LINKS
+- GitHub: https://github.com/Guevarra-Alpie01
+- LinkedIn: https://www.linkedin.com/in/guevarra-alpie-m-984103371
+- Facebook: https://www.facebook.com/share/1Amphg5LSD/
+
 HIGHLIGHTS
 - Builds responsive interfaces for desktop and mobile devices
 - Develops backend APIs and database-backed applications
