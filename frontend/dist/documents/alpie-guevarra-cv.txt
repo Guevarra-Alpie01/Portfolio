@@ -1,0 +1,27 @@
+ALPIE GUEVARRA
+Full-Stack Developer
+
+SUMMARY
+Full-stack developer focused on building web applications with Django, Python,
+Bootstrap, Tailwind CSS, HTML, CSS, and JavaScript. Comfortable working with
+MySQL, PostgreSQL, and SQLite, and using Git and GitHub for version control.
+
+CORE STACK
+- Backend: Django, Python
+- Frontend: Bootstrap, Tailwind CSS, HTML, CSS, JavaScript
+- Databases: MySQL, PostgreSQL, SQLite
+- Version Control: Git, GitHub
+
+SOCIAL LINKS
+- GitHub: https://github.com/Guevarra-Alpie01
+- LinkedIn: https://www.linkedin.com/in/guevarra-alpie-m-984103371
+- Facebook: https://www.facebook.com/share/1Amphg5LSD/
+
+HIGHLIGHTS
+- Builds responsive interfaces for desktop and mobile devices
+- Develops backend APIs and database-backed applications
+- Maintains clean, organized workflows with version control
+
+CONTACT
+Update this file with your real email, phone number, and project links before
+sharing it publicly.

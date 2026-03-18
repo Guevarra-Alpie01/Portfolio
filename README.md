@@ -121,12 +121,27 @@ VITE_API_BASE_URL=http://127.0.0.1:8000/api
 
 Update that value for production after deployment.
 
+## Production Build
+
+To build the frontend for deployment:
+
+```powershell
+cd frontend
+npm run build
+cd ..
+```
+
+The built frontend is output to `frontend/dist/`. Django is configured to serve
+that build at `/` in production while keeping the API under `/api/`. Production
+builds use `frontend/.env.production`, which points the frontend to `/api`.
+
 ## PythonAnywhere Notes
 
 - SQLite is used for free-tier compatibility.
 - No external APIs or external databases are required.
 - Collect static files with `py manage.py collectstatic`.
 - If React is served from the same domain in production, the CORS list can be tightened.
+- A full step-by-step deployment guide is available in `DEPLOY_PYTHONANYWHERE.md`.
 
 ## Beginner Notes
 

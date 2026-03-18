@@ -140,7 +140,7 @@ export default function HeroSection() {
               <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">
                 <div className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72">
                   <img
-                    src="/images/alpieremovebackground.png"
+                    src="/static/images/alpieremovebackground.png"
                     alt="Alpie Guevarra"
                     className="profile-image profile-image-entrance h-full w-full object-contain object-center"
                   />
@@ -149,7 +149,7 @@ export default function HeroSection() {
                   Alpie Guevarra
                 </p>
                 <a
-                  href="/documents/alpie-guevarra-cv.txt"
+                  href="/static/documents/alpie-guevarra-cv.txt"
                   download
                   className="profile-socials-entrance mt-5 inline-flex w-full items-center justify-center rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d]"
                 >

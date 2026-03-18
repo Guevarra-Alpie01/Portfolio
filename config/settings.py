@@ -2,8 +2,13 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env")
+FRONTEND_DIST_DIR = BASE_DIR / "frontend" / "dist"
+FRONTEND_INDEX_FILE = FRONTEND_DIST_DIR / "index.html"
 
 # These environment variables keep local development simple while still being
 # friendly to PythonAnywhere and other production environments.
@@ -50,7 +55,11 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [
+            path
+            for path in [BASE_DIR / "templates", FRONTEND_DIST_DIR]
+            if path.exists()
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -94,7 +103,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    path
+    for path in [BASE_DIR / "static", FRONTEND_DIST_DIR]
+    if path.exists()
+]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
@@ -111,6 +124,12 @@ CORS_ALLOWED_ORIGINS = [
         "CORS_ALLOWED_ORIGINS",
         "http://127.0.0.1:5173,http://localhost:5173",
     ).split(",")
+    if origin.strip()
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
     if origin.strip()
 ]
 
