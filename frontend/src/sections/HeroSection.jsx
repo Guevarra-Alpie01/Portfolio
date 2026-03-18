@@ -80,20 +80,20 @@ export default function HeroSection() {
         </div>
 
         <div className="section-shell relative mx-auto w-full max-w-md p-4 sm:p-5 md:p-6">
-          <div className="nested-shell rounded-[1.6rem] p-4 sm:rounded-[1.8rem] sm:p-5 md:rounded-[2rem] md:p-6">
-            <div className="profile-shell mx-auto w-full max-w-[18rem] rounded-[2rem] p-4 text-center">
-              <div className="profile-image-shell mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.7rem]">
+          <div className="nested-shell rounded-[1.6rem] px-4 pb-4 pt-12 sm:rounded-[1.8rem] sm:px-5 sm:pb-5 sm:pt-14 md:rounded-[2rem] md:px-6 md:pb-6 md:pt-16">
+            <div className="profile-shell profile-shell-entrance mx-auto -mt-16 flex w-full max-w-[22rem] flex-col items-center text-center sm:-mt-20 md:-mt-24">
+              <div className="profile-image-shell profile-image-shell-entrance mx-auto flex h-64 w-64 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72 md:h-80 md:w-80">
                 <img
-                  src="/images/alpie.jpg"
+                  src="/images/alpieremovebackground.png"
                   alt="Alpie Guevarra"
-                  className="h-full w-full object-cover object-center"
+                  className="profile-image profile-image-entrance h-full w-full object-contain object-center"
                 />
               </div>
-              <p className="mt-4 text-xl font-bold text-sand sm:text-2xl">
+              <p className="profile-name-entrance mt-4 text-xl font-bold text-sand sm:text-2xl md:mt-5">
                 Alpie Guevarra
               </p>
             </div>
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
+            <div className="profile-socials-entrance mt-3 flex flex-wrap justify-center gap-2 md:mt-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}

@@ -177,15 +177,60 @@ body {
 }
 
 .profile-shell {
-  border: 1px solid var(--border-soft);
-  background: var(--profile-shell-bg);
-  box-shadow: var(--surface-shadow-soft);
+  position: relative;
 }
 
 .profile-image-shell {
+  position: relative;
   border: 1px solid var(--border-strong);
-  background: var(--profile-frame-bg);
-  box-shadow: 0 18px 48px rgba(var(--shadow-panel) / 0.18);
+  background:
+    radial-gradient(circle at top, rgba(var(--color-ember) / 0.16), transparent 58%),
+    radial-gradient(circle at bottom, rgba(255, 255, 255, 0.22), transparent 62%),
+    var(--profile-frame-bg);
+  box-shadow:
+    0 32px 82px rgba(var(--shadow-panel) / 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.profile-image-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0.8rem;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 58%),
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.profile-image {
+  position: relative;
+  z-index: 1;
+  transform: translateY(1.35rem) scale(1.72);
+  transform-origin: center bottom;
+  filter: drop-shadow(0 24px 38px rgba(var(--shadow-panel) / 0.22));
+}
+
+.profile-shell-entrance {
+  animation: heroFadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.profile-image-shell-entrance {
+  animation:
+    heroScaleIn 1s cubic-bezier(0.2, 1, 0.22, 1) 0.34s both,
+    heroGlowPulse 1.6s ease-out 0.42s both;
+}
+
+.profile-image-entrance {
+  animation: heroImageReveal 1.1s cubic-bezier(0.2, 1, 0.22, 1) 0.46s both;
+}
+
+.profile-name-entrance {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+}
+
+.profile-socials-entrance {
+  animation: heroFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.84s both;
 }
 
 .chip-outline {
@@ -221,6 +266,20 @@ html[data-theme="light"] .hero-shell {
     linear-gradient(135deg, rgba(252, 245, 240, 0.98) 0%, rgba(241, 229, 220, 0.98) 100%);
 }
 
+html[data-theme="light"] .profile-image-shell {
+  background:
+    radial-gradient(circle at top, rgba(var(--color-ember) / 0.14), transparent 58%),
+    radial-gradient(circle at bottom, rgba(255, 255, 255, 0.5), transparent 62%),
+    var(--profile-frame-bg);
+}
+
+html[data-theme="light"] .profile-image-shell::before {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.46), transparent 58%),
+    rgba(255, 251, 247, 0.56);
+  border-color: rgba(104, 77, 65, 0.12);
+}
+
 html[data-theme="light"] .glass-shell,
 html[data-theme="light"] .section-shell,
 html[data-theme="light"] .card-shell,
@@ -236,4 +295,66 @@ html[data-theme="light"] .text-mist {
 
 html[data-theme="light"] .text-sand {
   color: rgb(var(--color-sand));
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(2.2rem) scale(0.72);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroImageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem) scale(1.46);
+    filter: blur(0.18rem) drop-shadow(0 10px 18px rgba(var(--shadow-panel) / 0.1));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(1.35rem) scale(1.72);
+    filter: drop-shadow(0 24px 38px rgba(var(--shadow-panel) / 0.22));
+  }
+}
+
+@keyframes heroGlowPulse {
+  0% {
+    box-shadow:
+      0 0 0 rgba(var(--shadow-panel) / 0),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  100% {
+    box-shadow:
+      0 32px 82px rgba(var(--shadow-panel) / 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-shell-entrance,
+  .profile-image-shell-entrance,
+  .profile-image-entrance,
+  .profile-name-entrance,
+  .profile-socials-entrance {
+    animation: none !important;
+  }
 }
