@@ -4,12 +4,10 @@ import AboutSection from "./sections/AboutSection";
 import ContactSection from "./sections/ContactSection";
 import HeroSection from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
-import SkillsSection from "./sections/SkillsSection";
 
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -122,7 +120,6 @@ export default function App() {
         <main className="space-y-4 md:space-y-6">
           <HeroSection />
           <AboutSection />
-          <SkillsSection />
           <ProjectsSection />
           <ContactSection />
         </main>
