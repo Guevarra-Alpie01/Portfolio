@@ -3,12 +3,57 @@
 @tailwind utilities;
 
 :root {
-  color: #f6eee8;
-  background: #0f0f11;
+  color: rgb(var(--color-sand));
+  background: rgb(var(--color-ink));
+  --color-ink: 15 15 17;
+  --color-ember: 242 108 97;
+  --color-ember-soft: 255 176 159;
+  --color-sand: 246 238 232;
+  --color-mist: 196 184 176;
+  --color-steel: 27 27 31;
+  --shadow-glow: 242 108 97;
+  --border-soft: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --panel-bg: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(0, 0, 0, 0.2);
+  --panel-inner: rgba(0, 0, 0, 0.25);
+  --chip-bg: rgba(0, 0, 0, 0.08);
+  --field-bg: rgba(255, 255, 255, 0.05);
+  --page-bg:
+    radial-gradient(circle at top left, rgba(242, 108, 97, 0.18), transparent 28%),
+    linear-gradient(135deg, #141416 0%, #101010 44%, #171215 100%);
+  --hero-mesh:
+    radial-gradient(circle at top left, rgba(242, 108, 97, 0.28), transparent 32%),
+    radial-gradient(circle at right center, rgba(255, 255, 255, 0.08), transparent 20%),
+    linear-gradient(135deg, #121214 0%, #101010 48%, #181213 100%);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme="light"] {
+  --color-ink: 248 243 238;
+  --color-ember: 214 98 82;
+  --color-ember-soft: 163 88 76;
+  --color-sand: 42 30 25;
+  --color-mist: 109 96 89;
+  --color-steel: 229 220 214;
+  --shadow-glow: 214 98 82;
+  --border-soft: rgba(103, 74, 59, 0.12);
+  --border-strong: rgba(103, 74, 59, 0.18);
+  --panel-bg: rgba(255, 255, 255, 0.66);
+  --panel-strong: rgba(255, 255, 255, 0.8);
+  --panel-inner: rgba(255, 255, 255, 0.72);
+  --chip-bg: rgba(255, 255, 255, 0.55);
+  --field-bg: rgba(255, 255, 255, 0.82);
+  --page-bg:
+    radial-gradient(circle at top left, rgba(214, 98, 82, 0.15), transparent 30%),
+    linear-gradient(135deg, #fcf6f1 0%, #efe3d8 46%, #f8eee6 100%);
+  --hero-mesh:
+    radial-gradient(circle at top left, rgba(214, 98, 82, 0.2), transparent 35%),
+    radial-gradient(circle at right center, rgba(76, 56, 48, 0.08), transparent 24%),
+    linear-gradient(135deg, rgba(255, 250, 246, 0.96) 0%, rgba(243, 230, 221, 0.98) 52%, rgba(249, 241, 234, 0.98) 100%);
 }
 
 html {
@@ -18,9 +63,11 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background:
-    radial-gradient(circle at top left, rgba(242, 108, 97, 0.18), transparent 28%),
-    linear-gradient(135deg, #141416 0%, #101010 44%, #171215 100%);
+  background: var(--page-bg);
+  color: rgb(var(--color-sand));
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
 }
 
 * {
@@ -28,7 +75,9 @@ body {
 }
 
 .section-shell {
-  @apply rounded-[1.75rem] border border-white/10 bg-white/5 backdrop-blur md:rounded-[2rem];
+  @apply rounded-[1.75rem] backdrop-blur transition-colors duration-300 md:rounded-[2rem];
+  border: 1px solid var(--border-soft);
+  background: var(--panel-bg);
 }
 
 .section-title {
@@ -37,4 +86,45 @@ body {
 
 .section-subtitle {
   @apply mt-3 max-w-2xl text-sm leading-6 text-mist md:text-base md:leading-7;
+}
+
+.glass-shell {
+  @apply backdrop-blur transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-bg);
+}
+
+.hero-shell {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+}
+
+.card-shell {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-strong);
+}
+
+.nested-shell {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-inner);
+}
+
+.info-row-shell {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--chip-bg);
+}
+
+.field-shell {
+  @apply outline-none transition;
+  border: 1px solid var(--border-soft);
+  background: var(--field-bg);
+}
+
+.theme-toggle {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-strong);
 }

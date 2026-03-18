@@ -1,0 +1,25 @@
+
+> student-portfolio-frontend@1.0.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m748[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.56.1:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.110.1:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.91.1:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://10.0.14.113:[1m5173[22m/[39m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mtailwind.config.js[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/HeroSection.jsx, /src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mtailwind.config.js[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/AboutSection.jsx, /src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/SkillsSection.jsx, /src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/ProjectsSection.jsx, /src/index.css[22m
+[2m10:32:58 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/ContactSection.jsx, /src/index.css[22m
+[2m10:34:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m10:34:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/HeroSection.jsx, /src/index.css[22m
+[2m10:34:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.jsx, /src/index.css[22m
+[2m10:34:20 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/sections/SkillsSection.jsx, /src/index.css[22m

@@ -4,22 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#0f0f11",
-        ember: "#f26c61",
-        emberSoft: "#ffb09f",
-        sand: "#f6eee8",
-        mist: "#c4b8b0",
-        steel: "#1b1b1f",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        ember: "rgb(var(--color-ember) / <alpha-value>)",
+        emberSoft: "rgb(var(--color-ember-soft) / <alpha-value>)",
+        sand: "rgb(var(--color-sand) / <alpha-value>)",
+        mist: "rgb(var(--color-mist) / <alpha-value>)",
+        steel: "rgb(var(--color-steel) / <alpha-value>)",
       },
       boxShadow: {
-        glow: "0 20px 80px rgba(242, 108, 97, 0.18)",
+        glow: "0 20px 80px rgb(var(--shadow-glow) / 0.22)",
       },
       fontFamily: {
         sans: ["Poppins", "Segoe UI", "sans-serif"],
       },
       backgroundImage: {
-        mesh:
-          "radial-gradient(circle at top left, rgba(242,108,97,0.28), transparent 32%), radial-gradient(circle at right center, rgba(255,255,255,0.08), transparent 20%), linear-gradient(135deg, #121214 0%, #101010 48%, #181213 100%)",
+        mesh: "var(--hero-mesh)",
       },
     },
   },

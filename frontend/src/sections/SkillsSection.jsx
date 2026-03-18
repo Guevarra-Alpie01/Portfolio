@@ -5,6 +5,20 @@ import ErrorState from "../components/ErrorState";
 import LoadingState from "../components/LoadingState";
 import SectionHeading from "../components/SectionHeading";
 
+const featuredSkillOrder = [
+  "Python",
+  "Django",
+  "Bootstrap",
+  "Tailwind CSS",
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "MySQL",
+  "PostgreSQL",
+  "SQLite",
+  "Git / GitHub",
+];
+
 export default function SkillsSection() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -36,12 +50,17 @@ export default function SkillsSection() {
     };
   }, []);
 
+  const orderedSkills = featuredSkillOrder
+    .map((skillName) => skills.find((skill) => skill.name === skillName))
+    .filter(Boolean);
+  const displaySkills = orderedSkills.length ? orderedSkills : skills;
+
   return (
     <section id="skills" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="Skills"
-        title="Technologies I use to build full-stack applications."
-        description="This section fetches skill data from the Django REST API and presents it as a quick confidence snapshot."
+        title="Technologies I use across frontend, backend, databases, and version control."
+        description="This section fetches skill data from the Django REST API and focuses on the stack I use for full-stack development."
       />
 
       {loading ? <LoadingState label="skills" /> : null}
@@ -49,10 +68,10 @@ export default function SkillsSection() {
 
       {!loading && !error ? (
         <div className="grid gap-4 md:grid-cols-2">
-          {skills.map((skill) => (
+          {displaySkills.map((skill) => (
             <article
               key={skill.id}
-              className="rounded-[1.4rem] border border-white/10 bg-black/20 p-4 sm:p-5"
+              className="card-shell rounded-[1.4rem] p-4 sm:p-5"
             >
               <div className="flex items-center justify-between gap-4">
                 <h3 className="text-base font-semibold text-sand">{skill.name}</h3>

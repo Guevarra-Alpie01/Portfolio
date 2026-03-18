@@ -44,28 +44,27 @@ export default function ContactSection() {
     <section id="contact" className="section-shell px-5 py-8 sm:px-6 sm:py-10 md:px-10">
       <SectionHeading
         eyebrow="Contact"
-        title="Let's talk about internships, junior roles, or collaborative projects."
+        title="Let's talk about full-stack roles, freelance work, or collaborative projects."
         description="This form submits directly to the Django REST API and stores each message inside SQLite."
       />
 
       <div className="grid gap-8 lg:grid-cols-[0.75fr_1fr]">
-        <div className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 md:rounded-[1.75rem] md:p-6">
+        <div className="card-shell rounded-[1.5rem] p-5 md:rounded-[1.75rem] md:p-6">
           <p className="text-lg font-semibold text-sand">Why this section matters</p>
           <p className="mt-4 text-sm leading-7 text-mist">
-            Recruiters or collaborators can leave a message without relying on
-            external APIs, which keeps the project compatible with PythonAnywhere's
-            free plan and easy to deploy.
+            Recruiters, clients, or collaborators can leave a message directly
+            through the portfolio without relying on third-party form services.
           </p>
           <div className="mt-6 space-y-3 text-sm text-mist">
-            <p>Email responses can be handled manually from the Django admin.</p>
-            <p>All submissions are stored in SQLite.</p>
+            <p>Messages can be reviewed from the Django admin.</p>
+            <p>Submissions are stored in the local database.</p>
             <p>The API returns validation errors for incomplete input.</p>
           </div>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="rounded-[1.5rem] border border-white/10 bg-black/20 p-5 md:rounded-[1.75rem] md:p-6"
+          className="card-shell rounded-[1.5rem] p-5 md:rounded-[1.75rem] md:p-6"
         >
           <div className="grid gap-5">
             <label className="grid gap-2 text-sm text-mist">
@@ -75,7 +74,7 @@ export default function ContactSection() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sand outline-none transition focus:border-ember"
+                className="field-shell rounded-2xl px-4 py-3 text-sand focus:border-ember"
                 placeholder="Your name"
                 required
               />
@@ -88,7 +87,7 @@ export default function ContactSection() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sand outline-none transition focus:border-ember"
+                className="field-shell rounded-2xl px-4 py-3 text-sand focus:border-ember"
                 placeholder="you@example.com"
                 required
               />
@@ -100,7 +99,7 @@ export default function ContactSection() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="min-h-36 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sand outline-none transition focus:border-ember"
+                className="field-shell min-h-36 rounded-2xl px-4 py-3 text-sand focus:border-ember"
                 placeholder="Tell me about the opportunity or project."
                 required
               />

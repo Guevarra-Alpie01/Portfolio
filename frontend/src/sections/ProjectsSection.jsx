@@ -52,7 +52,7 @@ export default function ProjectsSection() {
           {projects.map((project) => (
             <article
               key={project.id}
-              className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/20"
+              className="card-shell overflow-hidden rounded-[1.75rem]"
             >
               <div className="min-h-40 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-5 sm:min-h-48 sm:p-6">
                 <div className="flex h-full items-end">
