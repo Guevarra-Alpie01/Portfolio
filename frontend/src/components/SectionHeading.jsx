@@ -5,7 +5,7 @@ export default function SectionHeading({ eyebrow, title, description }) {
         {eyebrow}
       </p>
       <h2 className="section-title mt-3">{title}</h2>
-      <p className="section-subtitle">{description}</p>
+      {description ? <p className="section-subtitle">{description}</p> : null}
     </div>
   );
 }

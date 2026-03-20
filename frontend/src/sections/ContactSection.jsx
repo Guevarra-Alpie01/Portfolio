@@ -11,6 +11,21 @@ const initialForm = {
   message: "",
 };
 
+const contactLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Guevarra-Alpie01",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/guevarra-alpie-m-984103371",
+  },
+  {
+    label: "CV",
+    href: "/documents/alpie-guevarra-cv.txt",
+  },
+];
+
 export default function ContactSection() {
   const [formData, setFormData] = useState(initialForm);
   const [submitting, setSubmitting] = useState(false);
@@ -47,26 +62,39 @@ export default function ContactSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Contact"
-          title="Let's talk about full-stack roles, freelance work, or collaborative projects."
-          description="This form submits directly to the Django REST API and stores each message inside SQLite."
+          title="Start a conversation."
+          description="For full-stack roles, freelance work, or collaborative builds."
         />
       </Reveal>
 
-      <div className="grid gap-8 xl:grid-cols-[0.78fr_1.22fr]">
-        <div className="grid gap-6">
+      <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
+        <div className="grid gap-5">
           <Reveal
-            className="card-shell rounded-[1.5rem] p-5 md:rounded-[1.75rem] md:p-6"
+            className="contact-intro-card card-shell rounded-[1.5rem] p-5 md:rounded-[1.75rem] md:p-6"
             variant="left"
           >
-            <p className="text-lg font-semibold text-sand">Why this section matters</p>
-            <p className="mt-4 text-sm leading-7 text-mist">
-              Recruiters, clients, or collaborators can leave a message directly
-              through the portfolio without relying on third-party form services.
+            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.26em] text-emberSoft">
+              Open To Work
             </p>
-            <div className="mt-6 space-y-3 text-sm text-mist">
-              <p>Messages can be reviewed from the Django admin.</p>
-              <p>Submissions are stored in the local database.</p>
-              <p>The API returns validation errors for incomplete input.</p>
+            <h3 className="mt-4 max-w-[12ch] text-2xl font-semibold leading-tight text-sand sm:text-[2rem]">
+              Full-stack roles, freelance work, and product collaboration.
+            </h3>
+            <p className="mt-4 max-w-md text-sm leading-7 text-mist">
+              Send a direct message, or open the assistant for quick portfolio answers.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              {contactLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                  className="contact-link-chip inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-sand transition hover:text-emberSoft"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </Reveal>
 
@@ -82,6 +110,13 @@ export default function ContactSection() {
           variant="right"
           className="card-shell rounded-[1.5rem] p-5 md:rounded-[1.75rem] md:p-6"
         >
+          <div className="mb-6">
+            <p className="text-lg font-semibold text-sand">Send a message</p>
+            <p className="mt-2 text-sm leading-6 text-mist">
+              A short note and a reply email are enough.
+            </p>
+          </div>
+
           <div className="grid gap-5">
             <label className="grid gap-2 text-sm text-mist">
               Name
