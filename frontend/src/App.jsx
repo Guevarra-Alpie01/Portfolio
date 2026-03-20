@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import AboutSection from "./sections/AboutSection";
+import CustomCursor from "./components/CustomCursor";
 import ContactSection from "./sections/ContactSection";
 import HeroSection from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
@@ -44,6 +45,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
+      <CustomCursor />
       <div className="mx-auto max-w-7xl">
         <header className="glass-shell sticky top-3 z-50 mb-4 rounded-[1.5rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
           <div className="grid gap-3 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6">

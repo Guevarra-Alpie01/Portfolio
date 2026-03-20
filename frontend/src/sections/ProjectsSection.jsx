@@ -57,6 +57,7 @@ export default function ProjectsSection() {
               key={project.id}
               delay={index * 110}
               className="card-shell overflow-hidden rounded-[1.75rem]"
+              data-cursor="card"
             >
               <div className="min-h-40 bg-gradient-to-br from-ember/30 via-transparent to-white/10 p-5 sm:min-h-48 sm:p-6">
                 <div className="flex h-full items-end">

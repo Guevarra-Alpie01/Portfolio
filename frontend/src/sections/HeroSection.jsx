@@ -138,7 +138,10 @@ export default function HeroSection() {
           <div className="section-shell hero-portrait-card relative overflow-hidden rounded-[2rem] p-4 sm:p-5">
             <div className="nested-shell rounded-[1.6rem] px-4 pb-5 pt-10 sm:px-5 sm:pb-6 sm:pt-12">
               <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">
-                <div className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72">
+                <div
+                  className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72"
+                  data-cursor="magnetic"
+                >
                   <img
                     src="/static/images/alpieremovebackground.png"
                     alt="Alpie Guevarra"
