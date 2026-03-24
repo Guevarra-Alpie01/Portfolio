@@ -35,7 +35,21 @@ function ChatIcon() {
   );
 }
 
-export default function PortfolioChatbot() {
+function BotIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="6" y="8" width="12" height="9" rx="3" />
+      <path d="M12 4.5v3M9.2 13h.01M14.8 13h.01M9.5 17.2l1.2 1.7M14.5 17.2l-1.2 1.7" />
+      <circle cx="12" cy="4.2" r=".9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export default function PortfolioChatbot({
+  label = "Open Chat",
+  className = "",
+  iconVariant = "chat",
+}) {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [isReplying, setIsReplying] = useState(false);
@@ -309,6 +323,8 @@ export default function PortfolioChatbot() {
       )
     : null;
 
+  const TriggerIcon = iconVariant === "bot" ? BotIcon : ChatIcon;
+
   return (
     <>
       <button
@@ -318,12 +334,12 @@ export default function PortfolioChatbot() {
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-controls="portfolio-assistant-dialog"
-        className="chatbot-trigger inline-flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-sand transition hover:text-emberSoft"
+        className={`chatbot-trigger inline-flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold text-sand transition hover:text-emberSoft ${className}`.trim()}
       >
         <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/6 text-emberSoft">
-          <ChatIcon />
+          <TriggerIcon />
         </span>
-        <span>Open Chat</span>
+        <span>{label}</span>
       </button>
       {dialog}
     </>
