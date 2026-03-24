@@ -186,30 +186,30 @@ export default function HeroSection() {
         </div>
 
         <div className="hero-profile-column hero-item hero-item-4 mx-auto w-full max-w-[18.5rem] sm:max-w-[22rem]">
-          <div className="section-shell hero-portrait-card relative overflow-hidden rounded-[2rem] p-4 sm:p-5">
-            <div className="nested-shell rounded-[1.6rem] px-4 pb-5 pt-10 sm:px-5 sm:pb-6 sm:pt-12">
-              <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">
-                <div
-                  className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72"
-                  data-cursor="magnetic"
-                >
-                  <img
-                    src="/static/images/alpieremovebackground.png"
-                    alt="Alpie Guevarra"
-                    className="profile-image profile-image-entrance h-full w-full object-contain object-center"
-                  />
-                </div>
-                <p className="profile-name-entrance mt-4 text-xl font-bold text-sand sm:text-2xl">
-                  Alpie Guevarra
-                </p>
+          <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">
+            <div
+              className="profile-image-shell profile-image-shell-entrance mx-auto flex h-56 w-56 items-center justify-center overflow-hidden rounded-full sm:h-72 sm:w-72"
+              data-cursor="magnetic"
+            >
+              <img
+                src="/static/images/alpieremovebackground.png"
+                alt="Alpie Guevarra"
+                className="profile-image profile-image-entrance h-full w-full object-cover"
+              />
+            </div>
+            <div className="profile-copy">
+              <p className="profile-name-entrance text-xl font-bold text-sand sm:text-2xl">
+                Alpie Guevarra
+              </p>
+              <div className="profile-actions-row profile-socials-entrance">
                 <a
                   href="/static/documents/alpie-guevarra-cv.txt"
                   download
-                  className="profile-socials-entrance mt-5 inline-flex w-full items-center justify-center rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d]"
+                  className="profile-cv-button inline-flex items-center justify-center rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d]"
                 >
                   Download CV
                 </a>
-                <div className="profile-socials-entrance mt-4 flex items-center justify-center gap-3">
+                <div className="flex items-center justify-center gap-3">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
