@@ -63,6 +63,7 @@ export default function App() {
     );
   });
   const [systemTheme, setSystemTheme] = useState(getSystemTheme);
+  const [activeSection, setActiveSection] = useState("home");
   const theme = themePreference === "system" ? systemTheme : themePreference;
 
   useEffect(() => {
@@ -83,6 +84,37 @@ export default function App() {
     window.localStorage.setItem("portfolio-theme", theme);
     window.localStorage.setItem(THEME_PREFERENCE_KEY, themePreference);
   }, [theme, themePreference]);
+
+  useEffect(() => {
+    const sectionIds = navLinks.map((link) => link.href.slice(1));
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries.length) {
+          setActiveSection(visibleEntries[0].target.id);
+        }
+      },
+      {
+        threshold: [0.2, 0.4, 0.6],
+        rootMargin: "-18% 0px -52% 0px",
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   function handleThemeToggle() {
     setThemePreference((currentPreference) => {
@@ -136,7 +168,9 @@ export default function App() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="nav-link shrink-0 transition"
+                  className={`nav-link shrink-0 transition ${
+                    activeSection === link.href.slice(1) ? "is-active" : ""
+                  }`.trim()}
                 >
                   {link.label}
                 </a>

@@ -57,11 +57,57 @@ function FacebookIcon() {
   );
 }
 
-const stackIcons = [
+function HtmlIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="m4 3 1.6 18L12 22l6.4-1L20 3H4Zm11.7 4-.2 2.2H9l.2 2.2h6l-.6 6.3-2.6.7-2.6-.7-.2-2.4h2.1l.1.9.6.2.6-.2.2-2H7.3L6.8 7h8.9Z" />
+    </svg>
+  );
+}
+
+function CssIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="m4 3 1.6 18L12 22l6.4-1L20 3H4Zm11.3 4-.3 2.2H10l.1 2.2h4.7l-.5 5.9-2.3.7-2.4-.7-.1-2h2.1l.1.7.4.1.5-.1.2-2.4H8.2L7.9 7h7.4Z" />
+    </svg>
+  );
+}
+
+function DjangoIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M10.2 3h3.4v12.6c-1.7.3-3 .4-4.3.4-4 0-6.1-1.8-6.1-5.3 0-3.4 2.2-5.6 5.6-5.6.5 0 .9 0 1.4.1V3Zm0 5c-.4-.1-.7-.1-1.1-.1-1.7 0-2.7 1-2.7 2.8 0 1.7.9 2.7 2.6 2.7.4 0 .7 0 1.1-.1V8Zm9.3-2.7v7.7c0 2.6-.2 3.9-1 5-.8 1-2 1.7-3.8 2.2l-3.2-1.5c1.7-.4 2.9-1 3.5-1.8.7-.9.9-2 .9-4.8V5.3h3.6Zm-3.6-5.2h3.6v3.7h-3.6V.1Z" />
+    </svg>
+  );
+}
+
+function TailwindIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="M6 9.8c.9-2.1 2.2-3.1 4-3.1 2.7 0 3 2 4.4 2 1 0 1.8-.6 2.6-1.9-.9 2.1-2.2 3.1-4 3.1-2.7 0-3-2-4.4-2-1 0-1.8.6-2.6 1.9Zm4 5.5c.9-2.1 2.2-3.1 4-3.1 2.7 0 3 2 4.4 2 1 0 1.8-.6 2.6-1.9-.9 2.1-2.2 3.1-4 3.1-2.7 0-3-2-4.4-2-1 0-1.8.6-2.6 1.9Zm-8 0c.9-2.1 2.2-3.1 4-3.1 2.7 0 3 2 4.4 2 1 0 1.8-.6 2.6-1.9-.9 2.1-2.2 3.1-4 3.1-2.7 0-3-2-4.4-2-1 0-1.8.6-2.6 1.9Z" />
+    </svg>
+  );
+}
+
+function BootstrapIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+      <path d="M5.7 4.5c.1-1 1-1.8 2-1.8h8.6c1 0 1.9.8 2 1.8l.7 10.4c.1 1-.5 1.9-1.4 2.3l-4.4 2a2.6 2.6 0 0 1-2.2 0l-4.4-2a2.1 2.1 0 0 1-1.4-2.3l.5-10.4Zm5.2 2.6v3h2c1 0 1.6-.5 1.6-1.5 0-1-.6-1.5-1.8-1.5h-1.8Zm0 4.7v3.1h2.1c1.3 0 2-.5 2-1.6s-.7-1.5-2-1.5h-2.1Z" />
+    </svg>
+  );
+}
+
+const sliderSkills = [
+  { label: "Django", icon: <DjangoIcon /> },
   { label: "Python", icon: <PythonIcon /> },
   { label: "JavaScript", icon: <JavaScriptIcon /> },
+  { label: "HTML", icon: <HtmlIcon /> },
+  { label: "CSS", icon: <CssIcon /> },
+  { label: "Tailwind", icon: <TailwindIcon /> },
+  { label: "Bootstrap", icon: <BootstrapIcon /> },
   { label: "Databases", icon: <DatabaseIcon /> },
   { label: "Git", icon: <GitIcon /> },
+  { label: "GitHub", icon: <GitHubIcon /> },
 ];
 
 const socialLinks = [
@@ -105,17 +151,22 @@ export default function HeroSection() {
             Django, Python Developer.
           </p>
 
-          <div className="hero-item hero-item-4 mt-6 flex flex-wrap gap-3">
-            {stackIcons.map((item) => (
-              <div
-                key={item.label}
-                className="tech-icon-chip inline-flex h-12 w-12 items-center justify-center rounded-2xl text-sand"
-                aria-label={item.label}
-                title={item.label}
-              >
-                {item.icon}
+          <div className="hero-item hero-item-4 mt-6">
+            <div className="hero-skills-marquee">
+              <div className="hero-skills-track">
+                {[...sliderSkills, ...sliderSkills].map((item, index) => (
+                  <div
+                    key={`${item.label}-${index}`}
+                    className="hero-skill-pill tech-icon-chip"
+                    aria-label={item.label}
+                    title={item.label}
+                  >
+                    <span className="text-emberSoft">{item.icon}</span>
+                    <span>{item.label}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
 
           <div className="hero-item hero-item-5 mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">

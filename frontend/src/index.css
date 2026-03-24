@@ -27,6 +27,7 @@
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
   --profile-frame-bg:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  --nav-bg: #14161d;
   --page-bg:
     radial-gradient(circle at top left, rgba(242, 108, 97, 0.18), transparent 28%),
     linear-gradient(135deg, #141416 0%, #101010 44%, #171215 100%);
@@ -63,6 +64,7 @@ html[data-theme="light"] {
     linear-gradient(180deg, rgba(252, 245, 240, 0.94), rgba(240, 226, 216, 0.94));
   --profile-frame-bg:
     linear-gradient(180deg, rgba(255, 251, 248, 0.98), rgba(244, 230, 220, 0.94));
+  --nav-bg: #fff8f2;
   --page-bg:
     radial-gradient(circle at top left, rgba(210, 95, 79, 0.12), transparent 28%),
     radial-gradient(circle at bottom right, rgba(186, 145, 119, 0.12), transparent 24%),
@@ -251,10 +253,10 @@ section[id] {
   @apply transition-colors duration-300;
   border: 1px solid var(--border-soft);
   border-radius: 1rem;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
-    var(--panel-strong);
-  box-shadow: var(--surface-shadow-soft);
+  background: var(--nav-bg);
+  box-shadow:
+    0 16px 40px rgba(var(--shadow-panel) / 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .logo-mark {
@@ -404,11 +406,12 @@ section[id] {
 }
 
 .nav-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 2.25rem;
-  padding-inline: 0.1rem;
+  padding-inline: 0.25rem;
   font-size: 0.72rem;
   letter-spacing: 0.01em;
   color: rgb(var(--color-mist));
@@ -416,6 +419,57 @@ section[id] {
 
 .nav-link:hover {
   color: rgb(var(--color-ember-soft));
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.1rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: rgb(var(--color-ember));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active {
+  color: rgb(var(--color-sand));
+}
+
+.hero-skills-marquee {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.hero-skills-track {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: max-content;
+  animation: heroSkillMarquee 24s linear infinite;
+}
+
+.hero-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: max-content;
+  border-radius: 9999px;
+  padding: 0.8rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgb(var(--color-sand));
 }
 
 .ghost-button {
@@ -688,9 +742,7 @@ html[data-theme="light"] .nested-shell {
 }
 
 html[data-theme="light"] .nav-shell {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14)),
-    var(--panel-strong);
+  background: var(--nav-bg);
 }
 
 html[data-theme="light"] .nav-link,
@@ -712,6 +764,16 @@ html[data-theme="light"] .text-sand {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroSkillMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.425rem));
   }
 }
 
@@ -791,6 +853,16 @@ html[data-theme="light"] .text-sand {
     letter-spacing: 0;
   }
 
+  .hero-skills-track {
+    gap: 0.65rem;
+    animation-duration: 18s;
+  }
+
+  .hero-skill-pill {
+    padding: 0.68rem 0.85rem;
+    font-size: 0.72rem;
+  }
+
   .hero-reference-card {
     min-height: auto;
   }
@@ -835,5 +907,10 @@ html[data-theme="light"] .text-sand {
 
   .nav-link {
     font-size: 0.56rem;
+  }
+
+  .hero-skill-pill {
+    padding: 0.6rem 0.78rem;
+    font-size: 0.68rem;
   }
 }
