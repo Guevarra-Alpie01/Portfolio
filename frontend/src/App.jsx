@@ -50,22 +50,6 @@ function MoonIcon() {
   );
 }
 
-function MenuIcon({ isOpen }) {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      {isOpen ? (
-        <path d="M6 6l12 12M18 6 6 18" />
-      ) : (
-        <>
-          <path d="M4 7h16" />
-          <path d="M4 12h16" />
-          <path d="M4 17h16" />
-        </>
-      )}
-    </svg>
-  );
-}
-
 export default function App() {
   const [themePreference, setThemePreference] = useState(() => {
     if (typeof window === "undefined") {
@@ -79,7 +63,6 @@ export default function App() {
     );
   });
   const [systemTheme, setSystemTheme] = useState(getSystemTheme);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const theme = themePreference === "system" ? systemTheme : themePreference;
 
   useEffect(() => {
@@ -100,17 +83,6 @@ export default function App() {
     window.localStorage.setItem("portfolio-theme", theme);
     window.localStorage.setItem(THEME_PREFERENCE_KEY, themePreference);
   }, [theme, themePreference]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   function handleThemeToggle() {
     setThemePreference((currentPreference) => {
@@ -148,7 +120,7 @@ export default function App() {
       <CustomCursor />
       <div className="mx-auto max-w-7xl">
         <header className="nav-shell sticky top-3 z-50 mb-4 px-4 py-3 md:mb-6 md:px-5 md:py-4">
-          <div className="flex items-center justify-between gap-4 md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
+          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-3 md:gap-6">
             <div className="flex items-center">
               <a
                 href="#home"
@@ -159,7 +131,7 @@ export default function App() {
               </a>
             </div>
 
-            <nav className="nav-desktop hidden items-center justify-center gap-4 text-sm text-mist md:flex">
+            <nav className="nav-compact flex min-w-0 items-center justify-center gap-1 text-mist sm:gap-2 md:gap-4 md:text-sm">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -171,43 +143,9 @@ export default function App() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-2 md:justify-end">
-              <div className="hidden md:flex">{renderThemeButton()}</div>
-              <div className="flex items-center gap-2 md:hidden">
-                {renderThemeButton()}
-                <button
-                  type="button"
-                  onClick={() => setIsMobileMenuOpen((current) => !current)}
-                  className="nav-menu-toggle inline-flex h-10 w-10 items-center justify-center rounded-full text-sand"
-                  aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                  aria-expanded={isMobileMenuOpen}
-                  aria-controls="mobile-navigation"
-                >
-                  <span className="sr-only">
-                    {isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-                  </span>
-                  <MenuIcon isOpen={isMobileMenuOpen} />
-                </button>
-              </div>
+            <div className="flex items-center justify-end">
+              {renderThemeButton()}
             </div>
-          </div>
-
-          <div
-            id="mobile-navigation"
-            className={`nav-mobile-panel md:hidden ${isMobileMenuOpen ? "is-open" : ""}`}
-          >
-            <nav className="nav-mobile-links">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="nav-link nav-mobile-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
           </div>
         </header>
 
