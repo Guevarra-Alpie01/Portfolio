@@ -142,17 +142,17 @@ function SqliteIcon() {
 const aboutHighlights = [
   {
     label: "Backend",
-    description: "Django and Python APIs with database-backed logic.",
+    description: "Python and Django backend development for scalable applications.",
     icon: <UserIcon />,
   },
   {
     label: "Frontend",
-    description: "Responsive interfaces with simple, clean structure.",
+    description: "Responsive, secure, and user-friendly web experiences.",
     icon: <LayoutIcon />,
   },
   {
     label: "Workflow",
-    description: "Version control and practical project delivery.",
+    description: "Leadership, teamwork, and continuous learning in every build.",
     icon: <GitBranchIcon />,
   },
 ];
@@ -215,13 +215,44 @@ export default function AboutSection() {
             About Me
           </p>
           <h2 className="mt-3 max-w-md text-2xl font-semibold leading-tight text-sand sm:text-3xl">
-            A full-stack developer focused on modern web apps from interface to database.
+            BSIT graduate building clean, scalable web solutions.
           </h2>
           <p className="mt-4 max-w-lg text-sm leading-7 text-mist sm:text-base sm:leading-8">
-            I build practical web applications using Django, Python, JavaScript,
-            and modern frontend tools. My goal is to create clean user experiences
-            backed by reliable logic, organized workflows, and solid database design.
+            Hi, I&apos;m <span className="font-semibold text-sand">Alpie Guevarra</span>, a{" "}
+            <span className="font-semibold text-sand">
+              Bachelor of Science in Information Technology graduate
+            </span>{" "}
+            and an aspiring{" "}
+            <span className="font-semibold text-sand">
+              Full Stack Developer, Web Developer, and Software Engineer
+            </span>
+            . I specialize in <span className="font-semibold text-sand">backend development</span>{" "}
+            with <span className="font-semibold text-sand">Python and Django</span>, with a
+            strong focus on clean, logical coding and scalable applications.
           </p>
+          <p className="mt-4 max-w-lg text-sm leading-7 text-mist sm:text-base sm:leading-8">
+            I enjoy building responsive, secure, and maintainable web applications while
+            continuously learning new technologies and best practices. Alongside technical
+            work, I value <span className="font-semibold text-sand">leadership</span>,{" "}
+            <span className="font-semibold text-sand">teamwork</span>, and delivering
+            efficient solutions that stay user-friendly.
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {[ 
+              "BSIT Graduate",
+              "Python & Django",
+              "Scalable Applications",
+              "Leadership & Teamwork",
+            ].map((detail) => (
+              <span
+                key={detail}
+                className="info-row-shell inline-flex rounded-full px-3 py-2 text-xs font-semibold text-sand sm:text-sm"
+              >
+                {detail}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="mt-6 space-y-3">
