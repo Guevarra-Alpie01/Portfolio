@@ -165,7 +165,7 @@ function buildKnowledgeBase({ projects, skills, cvText }) {
   const projectSummaries = projects.map(
     (project) => `${project.title}: ${project.description} Built with ${project.tech_stack}.`,
   );
-  const skillSummary = topSkills.map((skill) => `${skill.name} (${skill.level}%)`);
+  const skillSummary = topSkills.map((skill) => skill.name);
 
   const documents = [
     {
@@ -224,7 +224,7 @@ function answerSkills(question, knowledgeBase) {
   const highlightedSkills = pickTopSkills(knowledgeBase.skills, 6);
 
   if (matches.length > 0) {
-    const details = matches.map((skill) => `${skill.name} (${skill.level}%)`);
+    const details = matches.map((skill) => skill.name);
 
     return {
       answer:
@@ -238,7 +238,7 @@ function answerSkills(question, knowledgeBase) {
     };
   }
 
-  const topSkillText = highlightedSkills.map((skill) => `${skill.name} (${skill.level}%)`);
+  const topSkillText = highlightedSkills.map((skill) => skill.name);
 
   return {
     answer:
