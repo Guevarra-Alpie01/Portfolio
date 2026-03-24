@@ -1,34 +1,5 @@
 import Reveal from "../components/Reveal";
 
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <circle cx="12" cy="8" r="3.2" />
-      <path d="M5 19.2c1.7-3 4-4.5 7-4.5s5.3 1.5 7 4.5" />
-    </svg>
-  );
-}
-
-function LayoutIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <path d="M4 5.5h16v13H4z" />
-      <path d="M10 5.5v13M4 10.5h6" />
-    </svg>
-  );
-}
-
-function GitBranchIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-      <circle cx="7" cy="5.5" r="2" />
-      <circle cx="17" cy="18.5" r="2" />
-      <circle cx="17" cy="8.5" r="2" />
-      <path d="M9 5.5h5a3 3 0 0 1 3 3v0M7 7.5v7a4 4 0 0 0 4 4h4" />
-    </svg>
-  );
-}
-
 function PythonIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
@@ -139,24 +110,6 @@ function SqliteIcon() {
   );
 }
 
-const aboutHighlights = [
-  {
-    label: "Backend",
-    description: "Python and Django backend development for scalable applications.",
-    icon: <UserIcon />,
-  },
-  {
-    label: "Frontend",
-    description: "Responsive, secure, and user-friendly web experiences.",
-    icon: <LayoutIcon />,
-  },
-  {
-    label: "Workflow",
-    description: "Leadership, teamwork, and continuous learning in every build.",
-    icon: <GitBranchIcon />,
-  },
-];
-
 const skillGroups = [
   {
     title: "Programming Languages",
@@ -192,7 +145,7 @@ const skillGroups = [
 function SkillChip({ label, icon }) {
   return (
     <div
-      className="nested-shell flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium text-sand sm:text-sm"
+      className="about-skill-chip nested-shell inline-flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-medium text-sand sm:text-sm"
       title={label}
       aria-label={label}
     >
@@ -239,27 +192,6 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="mt-6 space-y-3">
-          {aboutHighlights.map((item, index) => (
-            <Reveal
-              key={item.label}
-              delay={index * 90}
-              className="nested-shell flex items-start gap-3 rounded-[1.15rem] px-4 py-3"
-            >
-              <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full text-emberSoft chip-outline">
-                {item.icon}
-              </span>
-              <div>
-                <h3 className="text-sm font-semibold text-sand sm:text-base">
-                  {item.label}
-                </h3>
-                <p className="mt-1 text-xs leading-6 text-mist sm:text-sm">
-                  {item.description}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </Reveal>
 
       <Reveal
@@ -288,7 +220,7 @@ export default function AboutSection() {
               <h3 className="text-sm font-semibold text-sand sm:text-base">
                 {group.title}
               </h3>
-              <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="skill-chip-row mt-3">
                 {group.items.map((item, itemIndex) => (
                   <Reveal key={item.label} delay={itemIndex * 70}>
                     <SkillChip label={item.label} icon={item.icon} />

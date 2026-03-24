@@ -719,6 +719,16 @@ section[id] {
   background: var(--chip-bg);
 }
 
+.skill-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.about-skill-chip {
+  min-width: max-content;
+}
+
 .social-icon-button:hover {
   border-color: var(--border-strong);
   background: var(--panel-strong);
@@ -907,6 +917,16 @@ html[data-theme="light"] .text-sand {
     animation-duration: 18s;
   }
 
+  .skill-chip-row {
+    gap: 0.45rem;
+  }
+
+  .about-skill-chip {
+    padding-inline: 0.7rem;
+    padding-block: 0.55rem;
+    font-size: 0.72rem;
+  }
+
   .hero-skill-pill {
     padding: 0.45rem 0.7rem;
     font-size: 0.62rem;
@@ -1025,6 +1045,10 @@ html[data-theme="light"] .text-sand {
 
   .nav-link {
     font-size: 0.56rem;
+  }
+
+  .about-skill-chip {
+    font-size: 0.68rem;
   }
 
   .hero-skill-pill {
