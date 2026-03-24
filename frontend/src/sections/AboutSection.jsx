@@ -237,22 +237,6 @@ export default function AboutSection() {
             <span className="font-semibold text-sand">teamwork</span>, and delivering
             efficient solutions that stay user-friendly.
           </p>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {[ 
-              "BSIT Graduate",
-              "Python & Django",
-              "Scalable Applications",
-              "Leadership & Teamwork",
-            ].map((detail) => (
-              <span
-                key={detail}
-                className="info-row-shell inline-flex rounded-full px-3 py-2 text-xs font-semibold text-sand sm:text-sm"
-              >
-                {detail}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="mt-6 space-y-3">
