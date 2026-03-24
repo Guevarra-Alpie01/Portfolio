@@ -641,7 +641,7 @@ section[id] {
 
 .profile-image-shell {
   position: relative;
-  padding: 0.45rem;
+  padding: 0.5rem;
   border: 1px solid rgba(var(--color-ember) / 0.24);
   background:
     radial-gradient(circle at 28% 18%, rgba(var(--color-ember) / 0.16), transparent 48%),
@@ -656,8 +656,8 @@ section[id] {
   position: relative;
   border-radius: 9999px;
   object-fit: cover;
-  object-position: center 16%;
-  transform: scale(1.14) translateY(0.18rem);
+  object-position: center 14%;
+  transform: scale(1.18) translateY(0.14rem);
   filter: drop-shadow(0 14px 24px rgba(var(--shadow-panel) / 0.16));
 }
 
@@ -919,8 +919,8 @@ html[data-theme="light"] .text-sand {
   }
 
   .profile-image-shell {
-    height: 8.6rem !important;
-    width: 8.6rem !important;
+    height: 9.1rem !important;
+    width: 9.1rem !important;
   }
 
   .profile-copy {
@@ -1019,14 +1019,14 @@ html[data-theme="light"] .text-sand {
   }
 
   .profile-image-shell {
-    height: 8.2rem !important;
-    width: 8.2rem !important;
-    padding: 0.28rem;
+    height: 8.5rem !important;
+    width: 8.5rem !important;
+    padding: 0.3rem;
   }
 
   .profile-image {
-    object-position: center 12%;
-    transform: scale(1.22) translateY(0.16rem);
+    object-position: center 10%;
+    transform: scale(1.26) translateY(0.12rem);
   }
 
   .profile-copy {
