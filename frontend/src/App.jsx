@@ -13,6 +13,16 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+function LogoMark() {
+  return (
+    <span className="logo-mark" aria-hidden="true">
+      <span className="logo-mark-antenna" />
+      <span className="logo-mark-tail" />
+      <span className="logo-mark-text">AG</span>
+    </span>
+  );
+}
+
 function SunIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -47,14 +57,15 @@ export default function App() {
     <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
       <CustomCursor />
       <div className="mx-auto max-w-7xl">
-        <header className="glass-shell sticky top-3 z-50 mb-4 rounded-[1.5rem] px-4 py-4 md:mb-6 md:rounded-full md:px-8">
+        <header className="nav-shell sticky top-3 z-50 mb-4 px-4 py-4 md:mb-6 md:px-6">
           <div className="grid gap-3 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6">
             <div className="flex items-center justify-between gap-3 md:justify-start">
               <a
                 href="#home"
-                className="text-[0.66rem] font-bold uppercase tracking-[0.24em] text-sand sm:text-[0.72rem] sm:tracking-[0.3em] md:text-sm md:tracking-[0.38em]"
+                className="inline-flex items-center justify-center"
+                aria-label="Go to home"
               >
-                Alpie Guevarra
+                <LogoMark />
               </a>
               <button
                 type="button"
