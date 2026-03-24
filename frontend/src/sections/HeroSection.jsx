@@ -105,7 +105,9 @@ const sliderSkills = [
   { label: "CSS", icon: <CssIcon /> },
   { label: "Tailwind", icon: <TailwindIcon /> },
   { label: "Bootstrap", icon: <BootstrapIcon /> },
-  { label: "Databases", icon: <DatabaseIcon /> },
+  { label: "MySQL", icon: <DatabaseIcon /> },
+  { label: "PostgreSQL", icon: <DatabaseIcon /> },
+  { label: "SQLite", icon: <DatabaseIcon /> },
   { label: "Git", icon: <GitIcon /> },
   { label: "GitHub", icon: <GitHubIcon /> },
 ];
