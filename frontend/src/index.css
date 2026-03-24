@@ -251,14 +251,16 @@ section[id] {
   @apply transition-colors duration-300;
   border: 1px solid var(--border-soft);
   border-radius: 1rem;
-  background: rgba(15, 23, 42, 0.96);
-  box-shadow: 0 18px 42px rgba(2, 6, 23, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--panel-strong);
+  box-shadow: var(--surface-shadow-soft);
 }
 
 .logo-mark {
   position: relative;
-  width: 4rem;
-  height: 4rem;
+  width: 2.85rem;
+  height: 2.85rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -267,7 +269,7 @@ section[id] {
   border: 1px solid rgba(56, 189, 248, 0.2);
   color: #38bdf8;
   font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   box-shadow:
@@ -277,10 +279,10 @@ section[id] {
 
 .logo-mark-antenna {
   position: absolute;
-  top: -0.5rem;
+  top: -0.44rem;
   left: 50%;
   width: 2px;
-  height: 0.65rem;
+  height: 0.54rem;
   transform: translateX(-50%);
   background: rgba(56, 189, 248, 0.72);
 }
@@ -290,8 +292,8 @@ section[id] {
   position: absolute;
   top: -0.3rem;
   left: 50%;
-  width: 0.45rem;
-  height: 0.45rem;
+  width: 0.4rem;
+  height: 0.4rem;
   border-radius: 9999px;
   transform: translateX(-50%);
   background: #38bdf8;
@@ -300,10 +302,10 @@ section[id] {
 
 .logo-mark-tail {
   position: absolute;
-  right: 0.55rem;
-  bottom: -0.22rem;
-  width: 0.82rem;
-  height: 0.82rem;
+  right: 0.43rem;
+  bottom: -0.18rem;
+  width: 0.62rem;
+  height: 0.62rem;
   background: #0f172a;
   border-right: 1px solid rgba(56, 189, 248, 0.2);
   border-bottom: 1px solid rgba(56, 189, 248, 0.2);
@@ -392,17 +394,72 @@ section[id] {
   box-shadow: var(--surface-shadow-soft);
 }
 
+.nav-menu-toggle {
+  @apply transition-colors duration-300;
+  border: 1px solid var(--border-soft);
+  background: var(--panel-strong);
+  box-shadow: var(--surface-shadow-soft);
+}
+
 .theme-toggle:hover {
   border-color: var(--border-strong);
   color: rgb(var(--color-ember-soft));
 }
 
+.nav-menu-toggle:hover {
+  border-color: var(--border-strong);
+  color: rgb(var(--color-ember-soft));
+}
+
+.nav-desktop {
+  min-width: 0;
+}
+
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding-inline: 0.2rem;
   color: rgb(var(--color-mist));
 }
 
 .nav-link:hover {
   color: rgb(var(--color-ember-soft));
+}
+
+.nav-mobile-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition:
+    grid-template-rows 0.24s ease,
+    opacity 0.24s ease,
+    margin-top 0.24s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.nav-mobile-panel.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 0.9rem;
+}
+
+.nav-mobile-links {
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  gap: 0.35rem;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 0.9rem;
+}
+
+.nav-mobile-link {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.8rem 0.2rem;
+  font-size: 0.95rem;
 }
 
 .ghost-button {
@@ -675,8 +732,9 @@ html[data-theme="light"] .nested-shell {
 }
 
 html[data-theme="light"] .nav-shell {
-  background: rgba(255, 250, 246, 0.98);
-  box-shadow: 0 16px 34px rgba(153, 113, 92, 0.14);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.14)),
+    var(--panel-strong);
 }
 
 html[data-theme="light"] .logo-mark {
@@ -779,6 +837,10 @@ html[data-theme="light"] .text-sand {
 @media (max-width: 640px) {
   .hero-copy {
     padding-right: 0;
+  }
+
+  .nav-shell {
+    border-radius: 0.9rem;
   }
 
   .hero-reference-card {

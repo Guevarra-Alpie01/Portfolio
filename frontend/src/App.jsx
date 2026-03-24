@@ -13,6 +13,16 @@ const navLinks = [
   { href: "#contact", label: "Contact" },
 ];
 
+const THEME_PREFERENCE_KEY = "portfolio-theme-preference";
+
+function getSystemTheme() {
+  if (typeof window === "undefined") {
+    return "dark";
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
 function LogoMark() {
   return (
     <span className="logo-mark" aria-hidden="true">
@@ -40,26 +50,106 @@ function MoonIcon() {
   );
 }
 
+function MenuIcon({ isOpen }) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      {isOpen ? (
+        <path d="M6 6l12 12M18 6 6 18" />
+      ) : (
+        <>
+          <path d="M4 7h16" />
+          <path d="M4 12h16" />
+          <path d="M4 17h16" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export default function App() {
-  const [theme, setTheme] = useState(() => {
+  const [themePreference, setThemePreference] = useState(() => {
     if (typeof window === "undefined") {
-      return "dark";
+      return "system";
     }
-    return window.localStorage.getItem("portfolio-theme") || "dark";
+
+    return (
+      window.localStorage.getItem(THEME_PREFERENCE_KEY) ||
+      window.localStorage.getItem("portfolio-theme") ||
+      "system"
+    );
   });
+  const [systemTheme, setSystemTheme] = useState(getSystemTheme);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const theme = themePreference === "system" ? systemTheme : themePreference;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleThemeChange = (event) => {
+      setSystemTheme(event.matches ? "dark" : "light");
+    };
+
+    mediaQuery.addEventListener("change", handleThemeChange);
+    setSystemTheme(mediaQuery.matches ? "dark" : "light");
+
+    return () => mediaQuery.removeEventListener("change", handleThemeChange);
+  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     window.localStorage.setItem("portfolio-theme", theme);
-  }, [theme]);
+    window.localStorage.setItem(THEME_PREFERENCE_KEY, themePreference);
+  }, [theme, themePreference]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  function handleThemeToggle() {
+    setThemePreference((currentPreference) => {
+      if (currentPreference === "system") {
+        return theme === "dark" ? "light" : "dark";
+      }
+
+      return "system";
+    });
+  }
+
+  const nextThemeLabel =
+    themePreference === "system"
+      ? `Switch to ${theme === "dark" ? "light" : "dark"} mode`
+      : "Use system theme";
+
+  function renderThemeButton() {
+    return (
+      <button
+        type="button"
+        onClick={handleThemeToggle}
+        className="theme-toggle inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sand sm:h-11 sm:w-11"
+        aria-label={nextThemeLabel}
+        title={nextThemeLabel}
+        aria-pressed={themePreference !== "system"}
+      >
+        <span className="sr-only">{nextThemeLabel}</span>
+        {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      </button>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
       <CustomCursor />
       <div className="mx-auto max-w-7xl">
-        <header className="nav-shell sticky top-3 z-50 mb-4 px-4 py-4 md:mb-6 md:px-6">
-          <div className="grid gap-3 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-6">
-            <div className="flex items-center justify-between gap-3 md:justify-start">
+        <header className="nav-shell sticky top-3 z-50 mb-4 px-4 py-3 md:mb-6 md:px-5 md:py-4">
+          <div className="flex items-center justify-between gap-4 md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
+            <div className="flex items-center">
               <a
                 href="#home"
                 className="inline-flex items-center justify-center"
@@ -67,21 +157,9 @@ export default function App() {
               >
                 <LogoMark />
               </a>
-              <button
-                type="button"
-                onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-                className="theme-toggle inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sand md:hidden"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-                aria-pressed={theme === "light"}
-              >
-                <span className="sr-only">
-                  Switch to {theme === "dark" ? "light" : "dark"} mode
-                </span>
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </button>
             </div>
 
-            <nav className="flex items-center justify-center gap-3 overflow-x-auto whitespace-nowrap pb-1 text-[0.68rem] text-mist [scrollbar-width:none] sm:gap-4 sm:text-xs md:flex-wrap md:justify-center md:gap-6 md:pb-0 md:text-sm">
+            <nav className="nav-desktop hidden items-center justify-center gap-4 text-sm text-mist md:flex">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -93,20 +171,43 @@ export default function App() {
               ))}
             </nav>
 
-            <div className="hidden md:flex md:justify-end">
-              <button
-                type="button"
-                onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
-                className="theme-toggle inline-flex h-11 w-11 items-center justify-center rounded-full text-sand"
-                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-                aria-pressed={theme === "light"}
-              >
-                <span className="sr-only">
-                  Switch to {theme === "dark" ? "light" : "dark"} mode
-                </span>
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </button>
+            <div className="flex items-center gap-2 md:justify-end">
+              <div className="hidden md:flex">{renderThemeButton()}</div>
+              <div className="flex items-center gap-2 md:hidden">
+                {renderThemeButton()}
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen((current) => !current)}
+                  className="nav-menu-toggle inline-flex h-10 w-10 items-center justify-center rounded-full text-sand"
+                  aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls="mobile-navigation"
+                >
+                  <span className="sr-only">
+                    {isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                  </span>
+                  <MenuIcon isOpen={isMobileMenuOpen} />
+                </button>
+              </div>
             </div>
+          </div>
+
+          <div
+            id="mobile-navigation"
+            className={`nav-mobile-panel md:hidden ${isMobileMenuOpen ? "is-open" : ""}`}
+          >
+            <nav className="nav-mobile-links">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="nav-link nav-mobile-link"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
           </div>
         </header>
 
