@@ -137,7 +137,7 @@ export default function HeroSection() {
       <div className="absolute -right-20 top-0 h-44 w-44 rounded-full border border-ember/25 sm:h-52 sm:w-52" />
       <div className="absolute bottom-0 right-16 h-28 w-28 rounded-full bg-ember/12 blur-3xl" />
 
-      <div className="relative z-10 grid items-center gap-7 md:grid-cols-[minmax(0,1fr)_20rem] md:gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="hero-layout relative z-10 grid items-center gap-7 md:grid-cols-[minmax(0,1fr)_20rem] md:gap-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <div className="hero-copy max-w-2xl">
           <p className="hero-item hero-item-1 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
             Full-Stack Developer
@@ -169,23 +169,23 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="hero-item hero-item-5 mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+          <div className="hero-actions hero-item hero-item-5 mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href="#projects"
-              className="inline-flex w-full items-center justify-center rounded-full bg-ember px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d] sm:w-auto"
+              className="hero-action-button inline-flex w-full items-center justify-center rounded-full bg-ember px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d] sm:w-auto"
             >
               View My Work
             </a>
             <a
               href="#contact"
-              className="ghost-button inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-sand transition hover:text-emberSoft sm:w-auto"
+              className="hero-action-button ghost-button inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-sand transition hover:text-emberSoft sm:w-auto"
             >
               Contact Me
             </a>
           </div>
         </div>
 
-        <div className="hero-item hero-item-4 mx-auto w-full max-w-[18.5rem] sm:max-w-[22rem]">
+        <div className="hero-profile-column hero-item hero-item-4 mx-auto w-full max-w-[18.5rem] sm:max-w-[22rem]">
           <div className="section-shell hero-portrait-card relative overflow-hidden rounded-[2rem] p-4 sm:p-5">
             <div className="nested-shell rounded-[1.6rem] px-4 pb-5 pt-10 sm:px-5 sm:pb-6 sm:pt-12">
               <div className="profile-shell profile-shell-entrance mx-auto flex flex-col items-center text-center">

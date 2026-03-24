@@ -337,6 +337,10 @@ section[id] {
   padding-right: min(8vw, 3rem);
 }
 
+.hero-layout {
+  align-items: center;
+}
+
 .hero-item {
   opacity: 0;
   animation: heroFadeUp 0.46s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -448,6 +452,11 @@ section[id] {
   position: relative;
   overflow: hidden;
   border-radius: 9999px;
+  border: 1px solid var(--border-soft);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    var(--chip-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
   mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
@@ -466,10 +475,14 @@ section[id] {
   gap: 0.55rem;
   min-width: max-content;
   border-radius: 9999px;
-  padding: 0.8rem 1rem;
-  font-size: 0.82rem;
+  padding: 0.7rem 0.95rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: rgb(var(--color-sand));
+}
+
+.hero-profile-column {
+  align-self: center;
 }
 
 .ghost-button {
@@ -839,8 +852,24 @@ html[data-theme="light"] .text-sand {
 }
 
 @media (max-width: 640px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(9.5rem, 11.25rem);
+    align-items: start;
+    gap: 1rem;
+  }
+
   .hero-copy {
     padding-right: 0;
+    max-width: none;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+  }
+
+  .hero-copy p {
+    max-width: none;
   }
 
   .nav-shell {
@@ -854,17 +883,76 @@ html[data-theme="light"] .text-sand {
   }
 
   .hero-skills-track {
-    gap: 0.65rem;
+    gap: 0.45rem;
     animation-duration: 18s;
   }
 
   .hero-skill-pill {
-    padding: 0.68rem 0.85rem;
-    font-size: 0.72rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.62rem;
+    gap: 0.42rem;
+  }
+
+  .hero-skill-pill svg {
+    height: 0.9rem;
+    width: 0.9rem;
   }
 
   .hero-reference-card {
     min-height: auto;
+  }
+
+  .hero-profile-column {
+    max-width: 11.25rem;
+    align-self: stretch;
+  }
+
+  .hero-portrait-card {
+    padding: 0.7rem;
+    border-radius: 1.35rem;
+  }
+
+  .hero-portrait-card .nested-shell {
+    border-radius: 1.05rem;
+    padding: 0.8rem 0.75rem 0.95rem;
+  }
+
+  .profile-image-shell {
+    height: 8.6rem !important;
+    width: 8.6rem !important;
+  }
+
+  .profile-name-entrance {
+    margin-top: 0.8rem;
+    font-size: 1.08rem;
+  }
+
+  .profile-socials-entrance.mt-5 {
+    margin-top: 0.8rem;
+  }
+
+  .profile-socials-entrance.mt-4 {
+    margin-top: 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .profile-socials-entrance .social-icon-button {
+    height: 2.2rem;
+    width: 2.2rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .hero-action-button {
+    width: 100% !important;
+    padding-inline: 0.75rem;
+    padding-block: 0.72rem;
+    font-size: 0.74rem;
   }
 
   .chatbot-backdrop {
@@ -895,6 +983,11 @@ html[data-theme="light"] .text-sand {
 }
 
 @media (max-width: 420px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) 9.4rem;
+    gap: 0.8rem;
+  }
+
   .nav-shell {
     padding-inline: 0.75rem;
   }
@@ -910,7 +1003,25 @@ html[data-theme="light"] .text-sand {
   }
 
   .hero-skill-pill {
-    padding: 0.6rem 0.78rem;
+    padding: 0.38rem 0.58rem;
+    font-size: 0.56rem;
+  }
+
+  .hero-profile-column {
+    max-width: 9.4rem;
+  }
+
+  .profile-image-shell {
+    height: 7.4rem !important;
+    width: 7.4rem !important;
+  }
+
+  .profile-name-entrance {
+    font-size: 0.95rem;
+  }
+
+  .hero-action-button {
     font-size: 0.68rem;
+    padding-inline: 0.55rem;
   }
 }
