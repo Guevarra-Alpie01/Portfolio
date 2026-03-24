@@ -249,6 +249,7 @@ export default function AboutSection() {
 
       <Reveal
         as="article"
+        id="skills"
         variant="right"
         delay={120}
         className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"

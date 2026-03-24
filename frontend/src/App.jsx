@@ -9,6 +9,7 @@ import ProjectsSection from "./sections/ProjectsSection";
 const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -95,25 +96,29 @@ export default function App() {
       return undefined;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 140;
+      let nextActiveSection = sectionIds[0];
 
-        if (visibleEntries.length) {
-          setActiveSection(visibleEntries[0].target.id);
+      sections.forEach((section) => {
+        if (section.offsetTop <= scrollPosition) {
+          nextActiveSection = section.id;
         }
-      },
-      {
-        threshold: [0.2, 0.4, 0.6],
-        rootMargin: "-18% 0px -52% 0px",
-      },
-    );
+      });
 
-    sections.forEach((section) => observer.observe(section));
+      setActiveSection((current) =>
+        current === nextActiveSection ? current : nextActiveSection,
+      );
+    };
 
-    return () => observer.disconnect();
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   function handleThemeToggle() {
@@ -168,6 +173,7 @@ export default function App() {
                 <a
                   key={link.href}
                   href={link.href}
+                  onClick={() => setActiveSection(link.href.slice(1))}
                   className={`nav-link shrink-0 transition ${
                     activeSection === link.href.slice(1) ? "is-active" : ""
                   }`.trim()}
