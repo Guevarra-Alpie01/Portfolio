@@ -7,8 +7,9 @@ from .models import ContactMessage, Project, Skill
 class ProjectAdmin(admin.ModelAdmin):
     """Admin settings for the project model."""
 
-    list_display = ("title", "tech_stack", "created_at")
+    list_display = ("title", "sort_order", "tech_stack", "live_link", "created_at")
     search_fields = ("title", "tech_stack")
+    ordering = ("sort_order", "title")
 
 
 @admin.register(Skill)

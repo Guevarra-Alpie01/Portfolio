@@ -14,7 +14,7 @@ class ProjectListAPIView(APIView):
     """Returns every featured project for the frontend portfolio page."""
 
     def get(self, request):
-        projects = Project.objects.all()
+        projects = Project.objects.all().order_by("sort_order", "title")
         serializer = ProjectSerializer(projects, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

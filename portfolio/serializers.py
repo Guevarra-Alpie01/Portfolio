@@ -7,6 +7,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     """Converts project model instances into JSON for the frontend."""
 
     tech_stack_items = serializers.SerializerMethodField()
+    gallery_image_urls = serializers.SerializerMethodField()
 
     class Meta:
         model = Project
@@ -17,13 +18,29 @@ class ProjectSerializer(serializers.ModelSerializer):
             "tech_stack",
             "tech_stack_items",
             "image",
+            "gallery_images",
+            "gallery_image_urls",
             "github_link",
+            "live_link",
+            "sort_order",
             "created_at",
         ]
 
     def get_tech_stack_items(self, obj):
         """Turn the comma separated tech stack into an easy-to-render list."""
         return [item.strip() for item in obj.tech_stack.split(",") if item.strip()]
+
+    def get_gallery_image_urls(self, obj):
+        urls = [
+            chunk.strip()
+            for chunk in (obj.gallery_images or "").split(",")
+            if chunk.strip()
+        ]
+        if urls:
+            return urls
+        if obj.image and obj.image.strip():
+            return [obj.image.strip()]
+        return []
 
 
 class SkillSerializer(serializers.ModelSerializer):

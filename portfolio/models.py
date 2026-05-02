@@ -13,11 +13,21 @@ class Project(models.Model):
         blank=True,
         help_text="Use a local media path or a frontend asset path.",
     )
+    gallery_images = models.CharField(
+        max_length=1000,
+        blank=True,
+        help_text="Comma-separated asset URLs shown as a carousel (first image doubles as fallback).",
+    )
     github_link = models.URLField()
+    live_link = models.URLField(blank=True, max_length=500)
+    sort_order = models.PositiveIntegerField(
+        default=100,
+        help_text="Lower numbers appear earlier in the projects grid.",
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ["-created_at", "title"]
+        ordering = ["sort_order", "title"]
 
     def __str__(self):
         return self.title
