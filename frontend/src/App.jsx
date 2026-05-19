@@ -24,13 +24,16 @@ function getSystemTheme() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-function LogoMark() {
+function SiteLogo() {
   return (
-    <span className="logo-mark" aria-hidden="true">
-      <span className="logo-mark-antenna" />
-      <span className="logo-mark-tail" />
-      <span className="logo-mark-text">AG</span>
-    </span>
+    <img
+      src="/static/logo.png"
+      alt=""
+      width={156}
+      height={156}
+      decoding="async"
+      className="site-logo"
+    />
   );
 }
 
@@ -164,7 +167,7 @@ export default function App() {
                 className="inline-flex items-center justify-center"
                 aria-label="Go to home"
               >
-                <LogoMark />
+                <SiteLogo />
               </a>
             </div>
 

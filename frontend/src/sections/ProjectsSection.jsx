@@ -231,8 +231,8 @@ export default function ProjectsSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Projects"
-          title="Selected work focused on practical, portfolio-ready solutions."
-          description="Projects are fetched from the backend so you can update them later through Django admin or the database."
+          title="Highlighted projects"
+          description="These are my projects—each card shows what I built, the stack behind it, and where to dig into the repo."
         />
       </Reveal>
 
