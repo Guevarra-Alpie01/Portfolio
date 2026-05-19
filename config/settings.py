@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "portfolio",
+    "adoptions",
 ]
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
