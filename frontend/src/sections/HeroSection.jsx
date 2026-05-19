@@ -205,8 +205,8 @@ export default function HeroSection() {
               </p>
               <div className="profile-actions-row profile-socials-entrance">
                 <a
-                  href="/static/documents/alpie-guevarra-cv.txt"
-                  download
+                  href="/static/documents/alpie_resume.docx"
+                  download="alpie_resume.docx"
                   className="profile-cv-button inline-flex items-center justify-center rounded-full bg-ember px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#ff786d]"
                 >
                   Download CV

@@ -49,7 +49,8 @@ const contactLinks = [
   },
   {
     label: "CV",
-    href: "/documents/alpie-guevarra-cv.txt",
+    href: "/static/documents/alpie_resume.docx",
+    download: "alpie_resume.docx",
     icon: <DocumentIcon />,
   },
 ];
@@ -106,6 +107,7 @@ export default function ContactSection() {
             <a
               key={link.label}
               href={link.href}
+              {...(link.download ? { download: link.download } : {})}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noreferrer" : undefined}
               className="contact-link-icon inline-flex h-12 w-12 items-center justify-center rounded-full text-sand transition hover:text-emberSoft"

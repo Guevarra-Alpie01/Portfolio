@@ -23,7 +23,7 @@ const STATIC_PROFILE = {
     },
   ],
   cvLabel: "Download CV",
-  cvPath: "/documents/alpie-guevarra-cv.txt",
+  cvPath: "/static/documents/alpie_resume.docx",
 };
 
 const STOP_WORDS = new Set([
