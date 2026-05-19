@@ -30,7 +30,7 @@ def add_dog_adoption_project(apps, schema_editor):
         image="/static/bayawanvet.png",
         gallery_images=GALLERY,
         github_link="https://github.com/Guevarra-Alpie01/Capstone_DogAdoption",
-        live_link="https://bayawanvet.pythonanywhere.com/",
+        live_link="",
         sort_order=10,
     )
 
