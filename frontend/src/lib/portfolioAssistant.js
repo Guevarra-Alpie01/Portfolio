@@ -313,7 +313,7 @@ function answerResume(knowledgeBase) {
   return {
     answer:
       `The portfolio includes a downloadable CV here: ${knowledgeBase.profile.cvPath}. ` +
-      `It summarizes Alpie as a full-stack developer working with Django, Python, Bootstrap, Tailwind CSS, HTML, CSS, JavaScript, MySQL, PostgreSQL, SQLite, Git, and GitHub.`,
+      `It summarizes Alpie as a full-stack developer working with Django, Python, Bootstrap, Tailwind CSS, HTML, CSS, JavaScript, MySQL, PostgreSQL, SQLite, Redis, Git, and GitHub.`,
     suggestions: [
       "What tech stack does Alpie use?",
       "How can I contact Alpie?",
@@ -408,7 +408,7 @@ export function answerPortfolioQuestion(question, knowledgeBase) {
     return answerProjects(question, knowledgeBase);
   }
 
-  if (/(skill|skills|stack|tech|technology|frontend|backend|database|python|django|react|javascript|html|css|tailwind|bootstrap|mysql|postgresql|sqlite|git)/.test(normalizedQuestion)) {
+  if (/(skill|skills|stack|tech|technology|frontend|backend|database|python|django|react|javascript|html|css|tailwind|bootstrap|mysql|postgresql|sqlite|redis|git)/.test(normalizedQuestion)) {
     return answerSkills(question, knowledgeBase);
   }
 

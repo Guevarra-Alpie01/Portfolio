@@ -25,6 +25,15 @@ function DatabaseIcon() {
   );
 }
 
+function RedisIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3 21 8v8l-9 5-9-5V8l9-5Z" />
+      <path d="M12 12 21 8M12 12 3 8M12 12v10" />
+    </svg>
+  );
+}
+
 function GitIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -108,6 +117,7 @@ const sliderSkills = [
   { label: "MySQL", icon: <DatabaseIcon /> },
   { label: "PostgreSQL", icon: <DatabaseIcon /> },
   { label: "SQLite", icon: <DatabaseIcon /> },
+  { label: "Redis", icon: <RedisIcon /> },
   { label: "Git", icon: <GitIcon /> },
   { label: "GitHub", icon: <GitHubIcon /> },
 ];

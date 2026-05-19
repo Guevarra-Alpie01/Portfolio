@@ -24,9 +24,14 @@ const skillCategories = [
   {
     title: "Databases",
     description: "Database systems I use for storing, managing, and querying application data.",
-    skills: ["PostgreSQL", "MySQL", "SQLite"],
+    skills: ["PostgreSQL", "MySQL", "SQLite", "Redis"],
   },
 ];
+
+/** Shown if the API returns no Redis row yet (e.g. migrate not applied). */
+const LOCAL_SKILL_FALLBACK = {
+  Redis: 80,
+};
 
 export default function SkillsSection() {
   const [skills, setSkills] = useState([]);
@@ -59,12 +64,30 @@ export default function SkillsSection() {
     };
   }, []);
 
-  const skillsByName = new Map(skills.map((skill) => [skill.name, skill]));
+  const skillsByName = new Map(
+    skills.map((skill) => [String(skill.name).trim(), skill]),
+  );
+
   const categorizedSkills = skillCategories
     .map((category) => ({
       ...category,
       items: category.skills
-        .map((skillName) => skillsByName.get(skillName))
+        .map((skillName) => {
+          const key = skillName.trim();
+          const hit = skillsByName.get(key);
+          if (hit) {
+            return hit;
+          }
+          const level = LOCAL_SKILL_FALLBACK[key];
+          if (level != null) {
+            return {
+              id: `fallback-${key}`,
+              name: key,
+              level,
+            };
+          }
+          return null;
+        })
         .filter(Boolean),
     }))
     .filter((category) => category.items.length > 0);

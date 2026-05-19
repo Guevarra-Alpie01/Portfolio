@@ -110,6 +110,15 @@ function SqliteIcon() {
   );
 }
 
+function RedisIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3 21 8v8l-9 5-9-5V8l9-5Z" />
+      <path d="M12 12 21 8M12 12 3 8M12 12v10" />
+    </svg>
+  );
+}
+
 const skillGroups = [
   {
     title: "Programming Languages",
@@ -138,6 +147,7 @@ const skillGroups = [
       { label: "PostgreSQL", icon: <PostgreSqlIcon /> },
       { label: "MySQL", icon: <MySqlIcon /> },
       { label: "SQLite", icon: <SqliteIcon /> },
+      { label: "Redis", icon: <RedisIcon /> },
     ],
   },
 ];
