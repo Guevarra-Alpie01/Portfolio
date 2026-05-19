@@ -194,7 +194,7 @@ export default function HeroSection() {
               data-cursor="magnetic"
             >
               <img
-                src="/static/images/alpieremovebackground.png"
+                src="/static/Alpie_finalprofile.jpg"
                 alt="Alpie Guevarra"
                 className="profile-image profile-image-entrance h-full w-full object-cover"
               />
