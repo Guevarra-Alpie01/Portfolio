@@ -16,11 +16,10 @@ DESCRIPTION = (
 
 GALLERY = (
     "/static/tabulatorsystem1.png,"
-    "/static/tabulatorsystem2.png,"
-    "/static/tabulatorsystem3.png,"
-    "/static/tabulatorsystem4.png,"
-    "/static/tabulatorsystem5.png,"
-    "/static/tabulatorsystem6.png"
+    "/static/tabulator_system2.png,"
+    "/static/tabulator_system3.3.png,"
+    "/static/tabulator_system4.png,"
+    "/static/tabulator_system5.5.png"
 )
 
 
