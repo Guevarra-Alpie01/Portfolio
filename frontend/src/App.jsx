@@ -199,8 +199,13 @@ export default function App() {
           <ContactSection />
         </main>
 
-        <footer className="px-2 py-6 text-center text-xs text-mist sm:text-sm md:py-8">
-          Full-stack portfolio for Alpie Guevarra.
+        <footer className="px-2 py-6 text-center md:py-8">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
+            Full-stack portfolio of Alpie Guevarra
+          </p>
+          <p className="mx-auto mt-3 max-w-xl text-xs leading-relaxed text-mist sm:text-sm">
+            Django · Django REST Framework · React · Vite · Tailwind CSS · SQLite
+          </p>
         </footer>
       </div>
     </div>
