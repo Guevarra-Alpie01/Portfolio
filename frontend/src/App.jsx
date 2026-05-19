@@ -27,7 +27,7 @@ function getSystemTheme() {
 function SiteLogo() {
   return (
     <img
-      src="/static/logo.png"
+      src="/static/final-logo.png"
       alt=""
       width={156}
       height={156}
