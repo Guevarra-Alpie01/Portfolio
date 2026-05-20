@@ -13,7 +13,14 @@ media/
 
 # Frontend
 frontend/node_modules/
+frontend/dist/
 frontend/.env
+
+# Logs / OS / tool scratch
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.tmp/
 
 # Virtual environments
 venv/
