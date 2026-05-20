@@ -171,7 +171,7 @@ export default function AboutSection() {
       <Reveal
         as="article"
         variant="left"
-        className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
+        className="section-shell glass-about-skills flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
       >
         <div>
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">
@@ -209,7 +209,7 @@ export default function AboutSection() {
         id="skills"
         variant="right"
         delay={120}
-        className="section-shell flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
+        className="section-shell glass-about-skills flex h-full flex-col rounded-[1.75rem] px-5 py-8 sm:px-6 sm:py-10 md:px-8"
       >
         <div>
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-emberSoft sm:text-xs sm:tracking-[0.35em]">

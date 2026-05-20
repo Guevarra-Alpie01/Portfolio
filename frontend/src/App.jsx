@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
-import AboutSection from "./sections/AboutSection";
 import CustomCursor from "./components/CustomCursor";
+import useImmersive3DEligible from "./hooks/useImmersive3DEligible.js";
+import AboutSection from "./sections/AboutSection";
 import ContactSection from "./sections/ContactSection";
 import HeroSection from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
+
+const PortfolioBackground3D = lazy(() => import("./components/three/PortfolioBackground3D.jsx"));
 
 const navLinks = [
   { href: "#home", label: "Home" },
@@ -69,6 +72,10 @@ export default function App() {
   const [systemTheme, setSystemTheme] = useState(getSystemTheme);
   const [activeSection, setActiveSection] = useState("home");
   const theme = themePreference === "system" ? systemTheme : themePreference;
+
+  const immersiveEligible = useImmersive3DEligible();
+  const showBackgroundCanvas = immersiveEligible.allowWebGl && theme === "dark";
+  const backgroundTierLabel = immersiveEligible.isReducedQuality ? "medium" : "high";
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -156,9 +163,14 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
+    <div className="relative isolate min-h-screen bg-ink px-3 py-4 text-sand sm:px-4 md:px-8 md:py-6 lg:px-10">
+      {showBackgroundCanvas ? (
+        <Suspense fallback={null}>
+          <PortfolioBackground3D active tier={backgroundTierLabel} />
+        </Suspense>
+      ) : null}
       <CustomCursor />
-      <div className="mx-auto max-w-7xl">
+      <div className="portfolio-site-plane relative z-[1] mx-auto max-w-7xl">
         <header className="nav-shell sticky top-3 z-50 mb-4 px-4 py-3 md:mb-6 md:px-5 md:py-4">
           <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2 sm:gap-3 md:gap-6">
             <div className="flex items-center">
