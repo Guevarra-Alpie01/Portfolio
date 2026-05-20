@@ -1,3 +1,7 @@
+import logging
+
+from django.conf import settings
+from django.core.mail import send_mail
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,6 +12,34 @@ from .serializers import (
     ProjectSerializer,
     SkillSerializer,
 )
+
+logger = logging.getLogger(__name__)
+
+
+def _notify_contact_via_email(contact) -> None:
+    """Mail inbox when CONTACT_NOTIFICATION_TO + Gmail credentials are set."""
+    recipient = getattr(settings, "CONTACT_NOTIFICATION_TO", "").strip()
+    user = getattr(settings, "DJANGO_EMAIL_HOST_USER", "").strip()
+    pwd = getattr(settings, "DJANGO_EMAIL_HOST_PASSWORD", "").strip()
+
+    if not recipient or not user or not pwd:
+        return
+
+    subject = f"Portfolio contact: {contact.name}"
+    body_lines = [
+        contact.name,
+        f"Reply to: {contact.email}",
+        "",
+        contact.message,
+    ]
+    send_mail(
+        subject,
+        "\n".join(body_lines),
+        settings.DEFAULT_FROM_EMAIL,
+        [recipient],
+        reply_to=[contact.email],
+        fail_silently=False,
+    )
 
 
 class ProjectListAPIView(APIView):
@@ -35,6 +67,11 @@ class ContactCreateAPIView(APIView):
         serializer = ContactMessageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            try:
+                _notify_contact_via_email(serializer.instance)
+            except Exception:
+                logger.exception("Contact notification email failed; message was saved in the database.")
+
             return Response(
                 {
                     "message": "Thanks for reaching out. Your message has been saved.",

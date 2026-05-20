@@ -124,6 +124,27 @@ Optional, if you want uploaded media later:
 - URL: `/media/`
 - Directory: `/home/yourusername/<your-repo-name>/media`
 
+## Contact form notifications (optional, Gmail SMTP)
+
+[Gmail SMTP](https://support.google.com/mail/answer/7126229) is free for typical personal-volume mail; Google applies normal sending limits. On **PythonAnywhere free tier**, SMTP to **`smtp.gmail.com`** is the usual supported path—other SMTP hosts may be blocked.
+
+1. In your Google Account, enable **2-Step Verification** (if needed) and create an **App password** for “Mail”.
+2. In your PythonAnywhere **`.env`** (same folder as `manage.py`), set:
+
+```env
+DJANGO_EMAIL_HOST=smtp.gmail.com
+DJANGO_EMAIL_PORT=587
+DJANGO_EMAIL_USE_TLS=True
+DJANGO_EMAIL_HOST_USER=alpieguevarra.dev@gmail.com
+DJANGO_EMAIL_HOST_PASSWORD=your-16-character-app-password
+DJANGO_DEFAULT_FROM_EMAIL=alpieguevarra.dev@gmail.com
+CONTACT_NOTIFICATION_TO=alpieguevarra.dev@gmail.com
+```
+
+3. Reload the web app.
+
+If these variables are **missing**, submissions are still saved in the database exactly as before; no email is sent.
+
 ## Final Step
 
 Press **Reload** for the web app.
@@ -134,17 +155,26 @@ Your site should then be available at:
 https://yourusername.pythonanywhere.com/
 ```
 
-## Updating After Changes
+## Updating After Changes (PythonAnywhere, after every `git pull`)
 
-After pushing new commits to GitHub:
+Run these from a **Bash console**—replace `<your-repo-name>` and **`yourusername`** with yours.
 
 ```bash
 cd /home/yourusername/<your-repo-name>
 git pull
+
 source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
 python manage.py collectstatic --noinput
 ```
 
-If frontend code changed, run `npm run build` inside `frontend/` locally first,
-commit the updated `frontend/dist`, then push to GitHub before pulling on
-PythonAnywhere.
+Then:
+
+1. **Web tab → Reload** your site (needed so Django picks up code and env changes).
+
+**If `requirements.txt` did not change**, you can skip `pip install -r requirements.txt`.
+
+**`.env`** is not stored in Git. After the first clone you create it once (`cp .env.example .env`); after a pull you only edit **`.env`** when new variables appear in **`.env.example`** (for example Gmail SMTP). Never commit passwords.
+
+If the **frontend** changed, **`frontend/dist`** must be rebuilt **on your PC** (`cd frontend && npm run build`), committed, pushed, **then** `git pull` on PythonAnywhere before `collectstatic`.

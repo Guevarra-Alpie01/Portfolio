@@ -1,3 +1,6 @@
+# Env / secrets (never commit .env — create from .env.example)
+.env
+
 # Python
 __pycache__/
 *.py[cod]

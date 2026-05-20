@@ -142,3 +142,23 @@ REST_FRAMEWORK = {
         "rest_framework.parsers.JSONParser",
     ],
 }
+
+# --- Email (optional): Gmail SMTP works on PythonAnywhere free tier (smtp.gmail.com).
+# Uses an App Password (Google Account → Security → 2FA → App passwords), not your normal Gmail login.
+DJANGO_EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER", "").strip()
+DJANGO_EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD", "").strip()
+
+EMAIL_BACKEND = os.environ.get(
+    "DJANGO_EMAIL_BACKEND",
+    "django.core.mail.backends.smtp.EmailBackend",
+)
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST", "smtp.gmail.com").strip()
+EMAIL_PORT = int(os.environ.get("DJANGO_EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.environ.get("DJANGO_EMAIL_USE_TLS", "True").lower() == "true"
+EMAIL_HOST_USER = DJANGO_EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = DJANGO_EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = os.environ.get(
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    DJANGO_EMAIL_HOST_USER or "webmaster@localhost",
+).strip()
+CONTACT_NOTIFICATION_TO = os.environ.get("CONTACT_NOTIFICATION_TO", "").strip()
