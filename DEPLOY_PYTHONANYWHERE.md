@@ -7,19 +7,55 @@ single Django web app:
 - Django serves the built React frontend at `/`
 - Static frontend files are collected with `collectstatic`
 
-## Before You Push to GitHub
+## Node.js / npm on PythonAnywhere
 
-The repo **does not commit** `frontend/dist/` (it is gitignored). On PythonAnywhere you build the SPA after pulling:
+PythonAnywhere **does not ship `npm` or `node` in PATH**. You install Node yourself (recommended: **[nvm](https://github.com/nvm-sh/nvm)**).
+
+Use a **Bash** console—not IPython.
+
+### One-time: install nvm + Node LTS
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm use --lts
+node -v
+npm -v
+```
+
+After this, **new consoles** load nvm from `~/.bashrc`; if `npm` is still “not found”, run the two `export` / `. "$NVM_DIR/nvm.sh"` lines once in that session.
+
+**Install gotcha:** the install command must end with **`| bash`** on the **same line** as `curl` (don't press Enter until the full line is pasted). Example:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+
+### Bash reminders (Linux console)
+
+| Wrong | Correct |
+|--------|---------|
+| `cd..` | `cd ..` (space before `..`) |
+| `npm runbuild` | `npm run build` (space between `run` and `build`) |
+
+### Build the React app (`frontend/dist` is gitignored)
+
+From your project root (adjust `Portfolio` if your folder name differs):
 
 ```bash
 cd ~/Portfolio/frontend
-npm ci   # first time only; or npm install
+npm ci        # uses package-lock.json; or `npm install` if ci fails
 npm run build
 cd ..
+source venv/bin/activate   # optional; collectstatic uses Django from venv when active
 python manage.py collectstatic --noinput
 ```
 
-Then reload the web app.
+Then **Web tab → Reload**.
+
+**Alternative:** Run `npm run build` **on your PC**, then upload the whole `frontend/dist` folder via **Files / SFTP** to the matching path on the server. You must repeat that whenever the frontend changes.
 
 ## PythonAnywhere Setup
 
@@ -57,9 +93,12 @@ DJANGO_CSRF_TRUSTED_ORIGINS=https://yourusername.pythonanywhere.com
 CORS_ALLOWED_ORIGINS=
 ```
 
-If `DJANGO_ALLOWED_HOSTS` is unset, Django still allows requests to any `*.pythonanywhere.com` host by default—but **always** set `DJANGO_CSRF_TRUSTED_ORIGINS` to `https://yourusername.pythonanywhere.com` in production (`DEBUG=False`) so the contact form and other POSTs are not rejected for CSRF.
+If `DJANGO_ALLOWED_HOSTS` is missing or blank, or you list only explicit hosts in `.env`, `config/settings.py` **always merges** `127.0.0.1`, `localhost`, and **`.pythonanywhere.com`** (so any `*.pythonanywhere.com` site label works). Either **remove** the `DJANGO_ALLOWED_HOSTS=` line from `.env` or set your full hostname—you should not see `DisallowedHost` once you **pull latest `main`** and reload the web app.
 
+**Always** set `DJANGO_CSRF_TRUSTED_ORIGINS=https://yourusername.pythonanywhere.com` in production (`DEBUG=False`) so the contact form and other POSTs are not rejected for CSRF.
 5. Run Django setup commands:
+
+Before **`collectstatic`**, **`frontend/dist`** must exist ([build on the server with Node](#nodejs--npm-on-pythonanywhere) or upload `dist`). Otherwise Django will only collect Django/staticfiles without the SPA.
 
 ```bash
 python manage.py migrate
@@ -175,4 +214,4 @@ Then:
 
 **`.env`** is not stored in Git. After the first clone you create it once (`cp .env.example .env`); after a pull you only edit **`.env`** when new variables appear in **`.env.example`** (for example Gmail SMTP). Never commit passwords.
 
-If the **frontend** changed, **`frontend/dist`** must be rebuilt **on your PC** (`cd frontend && npm run build`), committed, pushed, **then** `git pull` on PythonAnywhere before `collectstatic`.
+If the **frontend** changed, rebuild **`frontend/dist`** on PythonAnywhere (see **[Node.js / npm on PythonAnywhere](#nodejs--npm-on-pythonanywhere)**) or upload a PC-built **`dist`** folder, then run **`collectstatic`** and **Reload** the web app.

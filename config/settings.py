@@ -18,14 +18,23 @@ SECRET_KEY = os.environ.get(
 )
 DEBUG = os.environ.get("DJANGO_DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.environ.get(
-        "DJANGO_ALLOWED_HOSTS",
-        "127.0.0.1,localhost,.pythonanywhere.com",
-    ).split(",")
-    if host.strip()
-]
+
+def _normalized_csv_hosts(value):
+    """Parse comma-separated hostnames; ignore empty segments."""
+    return [segment.strip() for segment in value.split(",") if segment.strip()]
+
+
+# Allow production PythonAnywhere subdomains (.pythonanywhere.com) even when
+# `.env` has `DJANGO_ALLOWED_HOSTS=` empty or lists only localhost.
+_DEFAULT_ALLOWED_HOSTS = ("127.0.0.1", "localhost", ".pythonanywhere.com")
+
+_user_allowed_raw = os.environ.get("DJANGO_ALLOWED_HOSTS", "").strip()
+
+if not _user_allowed_raw:
+    # Missing or blank → safe defaults include any *.pythonanywhere.com subdomain.
+    ALLOWED_HOSTS = list(_DEFAULT_ALLOWED_HOSTS)
+else:
+    ALLOWED_HOSTS = sorted(set(_normalized_csv_hosts(_user_allowed_raw)).union(_DEFAULT_ALLOWED_HOSTS))
 
 INSTALLED_APPS = [
     "django.contrib.admin",
