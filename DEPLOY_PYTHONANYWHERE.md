@@ -9,21 +9,17 @@ single Django web app:
 
 ## Before You Push to GitHub
 
-1. Build the frontend locally:
+The repo **does not commit** `frontend/dist/` (it is gitignored). On PythonAnywhere you build the SPA after pulling:
 
-```powershell
-cd frontend
+```bash
+cd ~/Portfolio/frontend
+npm ci   # first time only; or npm install
 npm run build
 cd ..
+python manage.py collectstatic --noinput
 ```
 
-2. Make sure these files are committed:
-
-- `frontend/dist/`
-- `.env.example`
-- `frontend/.env.example`
-
-The repo is already configured to allow `frontend/dist/` to be committed.
+Then reload the web app.
 
 ## PythonAnywhere Setup
 
@@ -51,7 +47,7 @@ cp .env.example .env
 nano .env
 ```
 
-Recommended `.env` values:
+Recommended `.env` values (use your PythonAnywhere username in place of `yourusername`):
 
 ```env
 DJANGO_SECRET_KEY=replace-with-a-long-random-secret
@@ -60,6 +56,8 @@ DJANGO_ALLOWED_HOSTS=yourusername.pythonanywhere.com
 DJANGO_CSRF_TRUSTED_ORIGINS=https://yourusername.pythonanywhere.com
 CORS_ALLOWED_ORIGINS=
 ```
+
+If `DJANGO_ALLOWED_HOSTS` is unset, Django still allows requests to any `*.pythonanywhere.com` host by default—but **always** set `DJANGO_CSRF_TRUSTED_ORIGINS` to `https://yourusername.pythonanywhere.com` in production (`DEBUG=False`) so the contact form and other POSTs are not rejected for CSRF.
 
 5. Run Django setup commands:
 
